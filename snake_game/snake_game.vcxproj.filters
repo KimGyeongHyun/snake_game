@@ -19,6 +19,12 @@
     <Filter Include="헤더 파일\display">
       <UniqueIdentifier>{1d24a2d8-6fb5-4612-9cfa-0c332f2500d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\frame">
+      <UniqueIdentifier>{e11727d9-3211-433d-8525-8d17c745d245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\frame">
+      <UniqueIdentifier>{64aa09df-08e3-498c-89de-899e7ce79f03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -28,7 +34,13 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="mainWindow.c">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\frame</Filter>
+    </ClCompile>
+    <ClCompile Include="logoframe.c">
+      <Filter>소스 파일\frame</Filter>
+    </ClCompile>
+    <ClCompile Include="frameSystem.c">
+      <Filter>소스 파일\frame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -36,7 +48,13 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="mainWindow.h">
-      <Filter>헤더 파일\display</Filter>
+      <Filter>헤더 파일\frame</Filter>
+    </ClInclude>
+    <ClInclude Include="logoframe.h">
+      <Filter>헤더 파일\frame</Filter>
+    </ClInclude>
+    <ClInclude Include="frameSystem.h">
+      <Filter>헤더 파일\frame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

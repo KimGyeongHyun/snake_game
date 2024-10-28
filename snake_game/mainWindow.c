@@ -1,13 +1,18 @@
 #include "mainWindow.h"
 
+#include <stdio.h>
+#include <Windows.h>
+#include <conio.h>
+
+#include "frameSystem.h"
+#include "logoframe.h"
+
 /******************************************************************
 * Parameters
 ******************************************************************/
 
 static int testValue;
 enum ResCode res_code;
-
-
 
 // Initialize window parameters
 void initDisplayParameters(void)
@@ -16,17 +21,9 @@ void initDisplayParameters(void)
 	res_code = Default;
 }
 
-// Move cursor to (x, y)
-void gotoxy(int x, int y)
-{
-	COORD pos = { x, y };
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
-}
-
 // Display empty frame
 void displayFrame(void)
 {
-
 	gotoxy(0, 0);
 
 	for (int i = 0; i < WINDOW_HEIGHT; i++)
@@ -36,28 +33,6 @@ void displayFrame(void)
 		else									// Middle
 			printf("\n*                                                                                                  *");
 	}
-}
-
-// Move cursor to end
-void gotoEnd()
-{
-	gotoxy(WINDOW_WIDTH - 1, WINDOW_HEIGHT - 1);
-}
-
-// Display c(char) in (x, y)
-void displayCharInXY(int x, int y, char c)
-{
-	// validation x, y coordinate
-	if (x < 0 || x >= WINDOW_WIDTH)		return;
-	if (y < 0 || y >= WINDOW_HEIGHT)	return;
-
-	// Move cursor to (x, y)
-	gotoxy(x, y);
-	// print c(char)
-	printf("%c", c);
-
-	// Return to end
-	gotoEnd();
 }
 
 enum ResCode checkCharValidation(char c)
@@ -75,7 +50,10 @@ void openMainWindow(void)
 	system("mode con: cols=100 lines=30");
 
 	// Display empty Frame
-	displayFrame();						
+	displayFrame();					
+
+	// Display logo window
+	openLogoWindow();
 
 	char keyChar;	// get input char from keyboard
 	for (;;)

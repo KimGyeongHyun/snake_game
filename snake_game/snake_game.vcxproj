@@ -127,11 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="frameSystem.c" />
+    <ClCompile Include="logoframe.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="mainWindow.c" />
     <ClCompile Include="test.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="frameSystem.h" />
+    <ClInclude Include="logoframe.h" />
     <ClInclude Include="mainWindow.h" />
     <ClInclude Include="test.h" />
   </ItemGroup>
