@@ -4,8 +4,10 @@
 #include <Windows.h>
 #include <conio.h>
 
+#include "gameData.h"
 #include "frameSystem.h"
 #include "logoframe.h"
+#include "mainMenuFrame.h"
 
 /******************************************************************
 * Parameters
@@ -41,7 +43,7 @@ enum ResCode checkCharValidation(char c)
 	return OK;
 }
 
-void openMainWindow(void)
+void openMainMenuWindow(void)
 {
 	// Initialize window parameters
 	initDisplayParameters();
@@ -52,19 +54,43 @@ void openMainWindow(void)
 	// Display empty Frame
 	displayFrame();					
 
-	// Display logo window
-	openLogoWindow();
+	// Display logo
+	openLogo();
+
+	// Display main menu
+	openMainMenu();
 
 	char keyChar;	// get input char from keyboard
 	for (;;)
 	{
+		printSelectedMenuIcon();
+
 		// When keyboard interrupt, get char data
 		keyChar = _getch();					// Save char data to keyChar
 		res_code = checkCharValidation(keyChar);
 		// TODO - Validation
 		if (res_code)	continue;
-		
-		displayCharInXY(2, 4, keyChar);		// Test, Display one char
-		displayCharInXY(15, 15, keyChar);	// Test, Display one char
+
+		changeMenuIndex(keyChar);
 	}
+}
+
+void openGameWindow(void)
+{
+	// Display empty Frame
+	displayFrame();
+}
+
+void openWindow(void)
+{
+	switch (gameWindowIndex)
+	{
+	case MAIN_MENU_START:
+		openMainMenuWindow();
+		break;
+	case MAIN_MENU_SCORE:
+		openGameWindow();
+		break;
+	}
+	
 }

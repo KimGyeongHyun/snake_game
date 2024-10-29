@@ -8,4 +8,4 @@
 #define LOGO_X_START	WINDOW_WIDTH / 2 - LOGO_WIDTH / 2
 #define LOGO_Y_START	3
 
-void openLogoWindow(void);
+void openLogo(void);

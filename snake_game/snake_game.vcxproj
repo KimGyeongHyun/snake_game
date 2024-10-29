@@ -128,14 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="frameSystem.c" />
+    <ClCompile Include="gameData.c" />
     <ClCompile Include="logoframe.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="mainGame.c" />
     <ClCompile Include="mainWindow.c" />
+    <ClCompile Include="mainMenuFrame.c" />
     <ClCompile Include="test.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frameSystem.h" />
+    <ClInclude Include="gameData.h" />
     <ClInclude Include="logoframe.h" />
+    <ClInclude Include="mainGame.h" />
+    <ClInclude Include="mainMenuFrame.h" />
     <ClInclude Include="mainWindow.h" />
     <ClInclude Include="test.h" />
   </ItemGroup>

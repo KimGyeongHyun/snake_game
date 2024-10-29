@@ -25,6 +25,18 @@
     <Filter Include="헤더 파일\frame">
       <UniqueIdentifier>{64aa09df-08e3-498c-89de-899e7ce79f03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\game">
+      <UniqueIdentifier>{081d6320-1cf5-4ee7-9030-f9d9b1610946}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game">
+      <UniqueIdentifier>{dca213fa-ca8a-4656-aa05-1035baf02ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\frame\mainMenuFrame">
+      <UniqueIdentifier>{a990a91d-922e-4578-a431-d7ecb0b926e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\frame\mainMenuFrame">
+      <UniqueIdentifier>{88ac3781-57f3-440d-906c-de78f0e12537}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -36,25 +48,43 @@
     <ClCompile Include="mainWindow.c">
       <Filter>소스 파일\frame</Filter>
     </ClCompile>
-    <ClCompile Include="logoframe.c">
-      <Filter>소스 파일\frame</Filter>
-    </ClCompile>
     <ClCompile Include="frameSystem.c">
       <Filter>소스 파일\frame</Filter>
+    </ClCompile>
+    <ClCompile Include="mainGame.c">
+      <Filter>소스 파일\game</Filter>
+    </ClCompile>
+    <ClCompile Include="gameData.c">
+      <Filter>소스 파일\game</Filter>
+    </ClCompile>
+    <ClCompile Include="logoframe.c">
+      <Filter>소스 파일\frame\mainMenuFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="mainMenuFrame.c">
+      <Filter>소스 파일\frame\mainMenuFrame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="frameSystem.h">
+      <Filter>헤더 파일\frame</Filter>
+    </ClInclude>
+    <ClInclude Include="mainGame.h">
+      <Filter>헤더 파일\game</Filter>
+    </ClInclude>
+    <ClInclude Include="gameData.h">
+      <Filter>헤더 파일\game</Filter>
+    </ClInclude>
+    <ClInclude Include="logoframe.h">
+      <Filter>헤더 파일\frame\mainMenuFrame</Filter>
+    </ClInclude>
     <ClInclude Include="mainWindow.h">
       <Filter>헤더 파일\frame</Filter>
     </ClInclude>
-    <ClInclude Include="logoframe.h">
-      <Filter>헤더 파일\frame</Filter>
-    </ClInclude>
-    <ClInclude Include="frameSystem.h">
-      <Filter>헤더 파일\frame</Filter>
+    <ClInclude Include="mainMenuFrame.h">
+      <Filter>헤더 파일\frame\mainMenuFrame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

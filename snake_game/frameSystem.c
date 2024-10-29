@@ -18,7 +18,7 @@ void gotoEnd()
 }
 
 // Display c(char) in (x, y)
-void displayCharInXY(int x, int y, char c)
+void printChar(int x, int y, char c)
 {
 	// validation x, y coordinate
 	if (x < 0 || x >= WINDOW_WIDTH)		return;
@@ -33,7 +33,8 @@ void displayCharInXY(int x, int y, char c)
 	gotoEnd();
 }
 
-void printSquare(int inputWidth, int inputHeight, int inputX, int inputY)
+// Draw square
+void printSquare(int inputX, int inputY, int inputWidth, int inputHeight)
 {
 
 	char printChar;
@@ -57,8 +58,17 @@ void printSquare(int inputWidth, int inputHeight, int inputX, int inputY)
 
 			printf("%c", printChar);
 		}
-		
 	}
+
+	gotoEnd();
+}
+
+void printString(int inputX, int inputY, char str[], int strLength)
+{
+	gotoxy(inputX, inputY);
+
+	for (int i = 0; i < strLength; i++)
+		printf("%c", str[i]);
 
 	gotoEnd();
 }

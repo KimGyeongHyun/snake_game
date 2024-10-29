@@ -4,15 +4,14 @@
 * User include file
 ********************************************************************/
 
-
-#include "mainWindow.h"
+#include "mainGame.h"
 #include "test.h"
 
 int main()
 {
 	testFunction();
 
-	openMainWindow();
+	startGame();
 
 	return 0;
 }

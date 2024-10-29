@@ -7,7 +7,9 @@ void gotoxy(int x, int y);
 void gotoEnd();
 
 // print char in (x, y)
-void displayCharInXY(int x, int y, char c);
+void printChar(int x, int y, char c);
 
 // draw frame
-void printSquare(int inputWidth, int inputHeight, int inputX, int inputY);
+void printSquare(int inputX, int inputY, int inputWidth, int inputHeight);
+
+void printString(int inputX, int inputY, char str[], int strLength);

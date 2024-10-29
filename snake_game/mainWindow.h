@@ -9,4 +9,4 @@ enum ResCode {
 	Default = 100,
 };
 
-void openMainWindow(void);
+void openWindow(void);
