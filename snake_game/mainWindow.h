@@ -3,10 +3,13 @@
 #define WINDOW_WIDTH	100
 #define WINDOW_HEIGHT	30
 
+#define GETCH_CHAR_ENTHER	13
+
 enum ResCode {
 	OK = 0,
-	ValidationError = 1,
+	NO = 1,
+	ValidationError = 2,
 	Default = 100,
 };
 
-void openWindow(void);
+void openMainMenuWindow(void);

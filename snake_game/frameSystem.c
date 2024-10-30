@@ -33,6 +33,20 @@ void printChar(int x, int y, char c)
 	gotoEnd();
 }
 
+// Display empty frame
+void displayFrame(void)
+{
+	gotoxy(0, 0);
+
+	for (int i = 0; i < WINDOW_HEIGHT; i++)
+	{
+		if (i == 0 || i == WINDOW_HEIGHT - 1)	// Upper & below
+			printf("\n****************************************************************************************************");
+		else									// Middle
+			printf("\n*                                                                                                  *");
+	}
+}
+
 // Draw square
 void printSquare(int inputX, int inputY, int inputWidth, int inputHeight)
 {

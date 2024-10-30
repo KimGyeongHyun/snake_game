@@ -42,9 +42,6 @@
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="test.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="mainWindow.c">
       <Filter>소스 파일\frame</Filter>
     </ClCompile>
@@ -63,11 +60,14 @@
     <ClCompile Include="mainMenuFrame.c">
       <Filter>소스 파일\frame\mainMenuFrame</Filter>
     </ClCompile>
+    <ClCompile Include="gameWindow.c">
+      <Filter>소스 파일\frame</Filter>
+    </ClCompile>
+    <ClCompile Include="optionWindow.c">
+      <Filter>소스 파일\frame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="test.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="frameSystem.h">
       <Filter>헤더 파일\frame</Filter>
     </ClInclude>
@@ -84,6 +84,12 @@
       <Filter>헤더 파일\frame</Filter>
     </ClInclude>
     <ClInclude Include="mainMenuFrame.h">
+      <Filter>헤더 파일\frame\mainMenuFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="gameWindow.h">
+      <Filter>헤더 파일\frame</Filter>
+    </ClInclude>
+    <ClInclude Include="optionWindow.h">
       <Filter>헤더 파일\frame\mainMenuFrame</Filter>
     </ClInclude>
   </ItemGroup>

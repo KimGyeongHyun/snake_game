@@ -9,6 +9,9 @@ void gotoEnd();
 // print char in (x, y)
 void printChar(int x, int y, char c);
 
+// print empty frame
+void displayFrame(void);
+
 // draw frame
 void printSquare(int inputX, int inputY, int inputWidth, int inputHeight);
 
