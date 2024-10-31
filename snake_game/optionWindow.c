@@ -1,6 +1,6 @@
 #include "optionWindow.h"
 
-#include "frameSystem.h"
+#include "gameSystem.h"
 
 void openOptionWindow(void)
 {

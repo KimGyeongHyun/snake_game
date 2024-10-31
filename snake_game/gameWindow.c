@@ -1,6 +1,6 @@
 #include "gameWindow.h"
 
-#include "frameSystem.h"
+#include "gameSystem.h"
 
 void openGameWindow(void)
 {

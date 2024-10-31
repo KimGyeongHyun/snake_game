@@ -5,7 +5,7 @@
 #include <conio.h>
 
 #include "gameData.h"
-#include "frameSystem.h"
+#include "gameSystem.h"
 #include "logoframe.h"
 #include "mainMenuFrame.h"
 

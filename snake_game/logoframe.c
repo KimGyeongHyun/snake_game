@@ -1,5 +1,5 @@
 #include "logoframe.h"
-#include "frameSystem.h"
+#include "gameSystem.h"
 
 void openLogo(void)
 {

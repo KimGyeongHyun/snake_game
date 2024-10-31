@@ -1,5 +1,5 @@
 #include "mainMenuFrame.h"
-#include "frameSystem.h"
+#include "gameSystem.h"
 #include "gameData.h"
 
 char menuArray[MAIN_MENU_NUMBER][10] = {

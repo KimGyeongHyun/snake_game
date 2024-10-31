@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\display">
-      <UniqueIdentifier>{cb6c53b0-fee9-4e18-b63b-b7315c60c4c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\display">
-      <UniqueIdentifier>{1d24a2d8-6fb5-4612-9cfa-0c332f2500d5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\frame">
       <UniqueIdentifier>{e11727d9-3211-433d-8525-8d17c745d245}</UniqueIdentifier>
     </Filter>
@@ -37,16 +31,19 @@
     <Filter Include="소스 파일\frame\mainMenuFrame">
       <UniqueIdentifier>{88ac3781-57f3-440d-906c-de78f0e12537}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\window">
+      <UniqueIdentifier>{10dcf3bc-7f0f-4e61-a657-4d79e61689ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\frame\GameFrame">
+      <UniqueIdentifier>{1f173de5-e65c-429a-8b63-f742fa3dd3f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\window">
+      <UniqueIdentifier>{ad7dd478-ce05-4b4a-94e4-d07385b39f44}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="mainWindow.c">
-      <Filter>소스 파일\frame</Filter>
-    </ClCompile>
-    <ClCompile Include="frameSystem.c">
-      <Filter>소스 파일\frame</Filter>
     </ClCompile>
     <ClCompile Include="mainGame.c">
       <Filter>소스 파일\game</Filter>
@@ -61,16 +58,19 @@
       <Filter>소스 파일\frame\mainMenuFrame</Filter>
     </ClCompile>
     <ClCompile Include="gameWindow.c">
-      <Filter>소스 파일\frame</Filter>
+      <Filter>소스 파일\window</Filter>
+    </ClCompile>
+    <ClCompile Include="mainWindow.c">
+      <Filter>소스 파일\window</Filter>
     </ClCompile>
     <ClCompile Include="optionWindow.c">
-      <Filter>소스 파일\frame</Filter>
+      <Filter>소스 파일\window</Filter>
+    </ClCompile>
+    <ClCompile Include="gameSystem.c">
+      <Filter>소스 파일\game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frameSystem.h">
-      <Filter>헤더 파일\frame</Filter>
-    </ClInclude>
     <ClInclude Include="mainGame.h">
       <Filter>헤더 파일\game</Filter>
     </ClInclude>
@@ -80,17 +80,20 @@
     <ClInclude Include="logoframe.h">
       <Filter>헤더 파일\frame\mainMenuFrame</Filter>
     </ClInclude>
-    <ClInclude Include="mainWindow.h">
-      <Filter>헤더 파일\frame</Filter>
-    </ClInclude>
     <ClInclude Include="mainMenuFrame.h">
       <Filter>헤더 파일\frame\mainMenuFrame</Filter>
     </ClInclude>
-    <ClInclude Include="gameWindow.h">
-      <Filter>헤더 파일\frame</Filter>
-    </ClInclude>
     <ClInclude Include="optionWindow.h">
       <Filter>헤더 파일\frame\mainMenuFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="gameSystem.h">
+      <Filter>헤더 파일\game</Filter>
+    </ClInclude>
+    <ClInclude Include="gameWindow.h">
+      <Filter>헤더 파일\window</Filter>
+    </ClInclude>
+    <ClInclude Include="mainWindow.h">
+      <Filter>헤더 파일\window</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
