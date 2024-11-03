@@ -10,6 +10,6 @@
 #define UP_ARROW_CHAR				72
 #define BELOW_ARROW_CHAR			80
 
-void printSelectedMenuIcon();
-void changeMenuIndex(char inputChar);
+void printSelectedMenuIcon(int* input_menuIndex);
+void changeMenuIndex(char inputChar, int* input_menuIndex);
 void openMainMenu();

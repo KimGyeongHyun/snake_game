@@ -14,28 +14,28 @@ void printMenuArray()
 	}
 }
 
-void printSelectedMenuIcon()
+void printSelectedMenuIcon(int* input_menuIndex)
 {
 	for (int i = 0; i < MAIN_MENU_NUMBER; i++)
 	{
 		printChar(MAIN_MENU_FRAME_X_START + 2, MAIN_MENU_FRAME_Y_START + 2 * (i + 1), ' ');
 	}
-	printChar(MAIN_MENU_FRAME_X_START + 2, MAIN_MENU_FRAME_Y_START + 2 * (mainMenuSelectIndex + 1), '@');
+	printChar(MAIN_MENU_FRAME_X_START + 2, MAIN_MENU_FRAME_Y_START + 2 * (*input_menuIndex + 1), '@');
 }
 
-void changeMenuIndex(char inputChar)
+void changeMenuIndex(char inputChar, int* input_menuIndex)
 {
 	if (inputChar == UP_ARROW_CHAR)
 	{
-		mainMenuSelectIndex--;
-		if (mainMenuSelectIndex < 0)
-			mainMenuSelectIndex = MAIN_MENU_NUMBER - 1;
+		(*input_menuIndex)--;
+		if (*input_menuIndex < 0)
+			*input_menuIndex = MAIN_MENU_NUMBER - 1;
 	}
 	else if (inputChar == BELOW_ARROW_CHAR)
 	{
-		mainMenuSelectIndex++;
-		if (mainMenuSelectIndex == MAIN_MENU_NUMBER)
-			mainMenuSelectIndex = 0;
+		(*input_menuIndex)++;
+		if (*input_menuIndex == MAIN_MENU_NUMBER)
+			*input_menuIndex = 0;
 	}
 }
 

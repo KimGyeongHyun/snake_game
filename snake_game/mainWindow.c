@@ -14,6 +14,7 @@
 ******************************************************************/
 
 enum ResCode res_code;
+int menuIndex = 0;
 
 // Initialize window parameters
 void initDisplayParameters(void)
@@ -52,7 +53,7 @@ void openMainMenuWindow(void)
 	char keyChar;	// get input char from keyboard
 	for (;;)
 	{
-		printSelectedMenuIcon();
+		printSelectedMenuIcon(&menuIndex);
 
 		// When keyboard interrupt, get char data
 		keyChar = _getch();					// Save char data to keyChar
@@ -69,8 +70,6 @@ void openMainMenuWindow(void)
 			break;
 		}
 		
-		changeMenuIndex(keyChar);
+		changeMenuIndex(keyChar, &menuIndex);
 	}
-
-	gameWindowIndex = menuToWindow[gameWindowIndex][1];
 }

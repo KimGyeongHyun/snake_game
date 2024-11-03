@@ -4,21 +4,17 @@ C language study
 
 # TODO
 
-    메인메뉴 인덱스 전역 변수 작동 방식 구상
-        menu index enter -> window index 전환 방식 구상
-        index 변수 선언 파일 위치 결정
-        구조체 형식 사용 고려 (config 구조체)
-        모든 메뉴 진입 정상 작동 테스트
+    메인메뉴 인덱스 전역 변수 작동 방식 구상 - 완료
+        menu window 에 어떤 메뉴가 active 상태인지 결정하는 extern 변수 선언 (menuIndex)
+        menu frame 에서 해당 변수를 포인터로 받아 제어
+        menu에서 enter 입력 시 상위 game 에서 menuIndex 를 받아 어떤 window 를 출력할지 windowIndex 에 갱신
+        menuIndex -> windowIndex 변환을 위한 내부 const 배열 사용
 
     game frame 구상 및 작성
 
 # Long view
 
     C언어 배열, 포인터, 파일 관리 방법 스터디
-
-        상수 배열 헤더 선언
-            헤더에 extern const 선언, 실행 파일에 정의
-            extern 없이 const 선언할 경우 해당 헤더를 include 하는 모든 실행 파일이 const 변수를 RAM 메모리에 올림
 
         포인터 사용 시점
             구조체 (전반적인 configuration data)

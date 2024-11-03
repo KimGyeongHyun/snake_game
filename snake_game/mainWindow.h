@@ -5,6 +5,8 @@
 
 #define GETCH_CHAR_ENTHER	13
 
+extern int menuIndex;
+
 enum ResCode {
 	OK = 0,
 	NO = 1,

@@ -6,6 +6,19 @@
 #include "gameWindow.h"
 #include "optionWindow.h"
 
+static int windowIndex = 0;
+
+const int MENU_TO_WINDOW_MAPPING[][2] = {
+	{MENU_START, WINDOW_GAME},
+	{MENU_OPTION, WINDOW_OPTION},
+	{MENU_EXIT, WINDOW_EXIT}
+};
+
+void windowMapping()
+{
+	windowIndex = MENU_TO_WINDOW_MAPPING[menuIndex][1];
+}
+
 void startGame()
 {
 	// Set terminal size
@@ -13,7 +26,7 @@ void startGame()
 
 	for (;;)
 	{
-		switch (gameWindowIndex)
+		switch (windowIndex)
 		{
 		case WINDOW_MAIN_MENU:
 			openMainMenuWindow();
@@ -28,5 +41,7 @@ void startGame()
 			exit(2);
 			break;
 		}
+
+		windowMapping();
 	}
 }

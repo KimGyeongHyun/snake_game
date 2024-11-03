@@ -40,6 +40,12 @@
     <Filter Include="헤더 파일\window">
       <UniqueIdentifier>{ad7dd478-ce05-4b4a-94e4-d07385b39f44}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\element">
+      <UniqueIdentifier>{b329d335-d5c0-4e2b-bbf4-ed537d22405e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\element">
+      <UniqueIdentifier>{407cc704-4ba3-47d6-9c91-14e2276f96d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
