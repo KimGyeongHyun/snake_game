@@ -46,6 +46,9 @@
     <Filter Include="헤더 파일\element">
       <UniqueIdentifier>{407cc704-4ba3-47d6-9c91-14e2276f96d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\frame\GameFrame">
+      <UniqueIdentifier>{1f1fcf2d-0e7c-4214-88c6-58bbf7c91be8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -75,6 +78,9 @@
     <ClCompile Include="gameSystem.c">
       <Filter>소스 파일\game</Filter>
     </ClCompile>
+    <ClCompile Include="gameFrame.c">
+      <Filter>소스 파일\frame\GameFrame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainGame.h">
@@ -100,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="mainWindow.h">
       <Filter>헤더 파일\window</Filter>
+    </ClInclude>
+    <ClInclude Include="gameFrame.h">
+      <Filter>헤더 파일\frame\GameFrame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="gameFrame.c" />
     <ClCompile Include="gameSystem.c" />
     <ClCompile Include="gameData.c" />
     <ClCompile Include="gameWindow.c" />
@@ -138,6 +139,7 @@
     <ClCompile Include="optionWindow.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="gameFrame.h" />
     <ClInclude Include="gameSystem.h" />
     <ClInclude Include="gameData.h" />
     <ClInclude Include="gameWindow.h" />

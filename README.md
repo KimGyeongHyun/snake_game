@@ -4,13 +4,19 @@ C language study
 
 # TODO
 
-    메인메뉴 인덱스 전역 변수 작동 방식 구상 - 완료
-        menu window 에 어떤 메뉴가 active 상태인지 결정하는 extern 변수 선언 (menuIndex)
-        menu frame 에서 해당 변수를 포인터로 받아 제어
-        menu에서 enter 입력 시 상위 game 에서 menuIndex 를 받아 어떤 window 를 출력할지 windowIndex 에 갱신
-        menuIndex -> windowIndex 변환을 위한 내부 const 배열 사용
+    game window 구상 및 작성
+        1. game frame 구현 - 완료
+        2. score frame 구현
+        3. snake, apple, spike, score 등의 변수 선언 및 초기화
+            game window 에 선언, 하위 frame 이나 element 에서 제어하도록 구조 설계
+            keyboard 입력 define 은 system 쪽에 배치, menu 와 game 에서 둘 다 사용하도록 설계
+        4. ms delay 구현
+            loop 문에 sleep 을 사용하여 카운터 적용
 
-    game frame 구상 및 작성
+
+    사용하지 않는 include 파일 제거
+
+    사용하지 않는 #define, 상수, 변수 제거
 
 # Long view
 
