@@ -81,6 +81,9 @@
     <ClCompile Include="gameFrame.c">
       <Filter>소스 파일\frame\GameFrame</Filter>
     </ClCompile>
+    <ClCompile Include="gameScoreFrame.c">
+      <Filter>소스 파일\frame\GameFrame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainGame.h">
@@ -108,6 +111,9 @@
       <Filter>헤더 파일\window</Filter>
     </ClInclude>
     <ClInclude Include="gameFrame.h">
+      <Filter>헤더 파일\frame\GameFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="gameScoreFrame.h">
       <Filter>헤더 파일\frame\GameFrame</Filter>
     </ClInclude>
   </ItemGroup>

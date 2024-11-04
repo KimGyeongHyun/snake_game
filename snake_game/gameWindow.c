@@ -3,12 +3,22 @@
 #include "gameSystem.h"
 #include "gameWindow.h"
 #include "gameFrame.h"
+#include "gameScoreFrame.h"
+
+// Scores
+int currentScore = 0;
+int highScore = 0;
+
+// Snake
+
 
 void openGameWindow(void)
 {
 	displayFrame();
 
 	openGameFrame();
+
+	openGameScoreFrame();
 
 	int testInt = 0;
 
