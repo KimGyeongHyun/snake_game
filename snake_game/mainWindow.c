@@ -14,6 +14,9 @@
 ******************************************************************/
 
 enum ResCode res_code;
+
+// Determine active menu
+// when enter is pressed, select active menu & open window
 int menuIndex = 0;
 
 // Initialize window parameters
@@ -28,6 +31,7 @@ enum ResCode checkCharValidation(char c)
 	return OK;
 }
 
+// Check enter
 enum ResCode checkCharEnter(char c)
 {
 	if (c == GETCH_CHAR_ENTHER)
@@ -53,6 +57,7 @@ void openMainMenuWindow(void)
 	char keyChar;	// get input char from keyboard
 	for (;;)
 	{
+		// Highlight active menu in terminal
 		printSelectedMenuIcon(&menuIndex);
 
 		// When keyboard interrupt, get char data
@@ -61,6 +66,7 @@ void openMainMenuWindow(void)
 		res_code = Default;
 		res_code = checkCharValidation(keyChar);
 		// TODO - Validation
+		// maybe no use
 		if (res_code)	continue;
 
 		res_code = Default;
@@ -70,6 +76,7 @@ void openMainMenuWindow(void)
 			break;
 		}
 		
+		// if up OR down arrow is pressed, change menuIndex
 		changeMenuIndex(keyChar, &menuIndex);
 	}
 }

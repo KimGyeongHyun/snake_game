@@ -5,6 +5,7 @@
 
 #define GETCH_CHAR_ENTHER	13
 
+// Active menu index
 extern int menuIndex;
 
 enum ResCode {

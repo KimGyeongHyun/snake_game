@@ -6,6 +6,7 @@ char menuArray[MAIN_MENU_NUMBER][10] = {
 	{"Start     "}, {"option    "}, {"Exit      "}
 };
 
+// Print menu in terminal
 void printMenuArray()
 {
 	for (int i = 0; i < MAIN_MENU_NUMBER; i++)
@@ -14,6 +15,7 @@ void printMenuArray()
 	}
 }
 
+// Print active menu in terminal
 void printSelectedMenuIcon(int* input_menuIndex)
 {
 	for (int i = 0; i < MAIN_MENU_NUMBER; i++)
@@ -23,6 +25,7 @@ void printSelectedMenuIcon(int* input_menuIndex)
 	printChar(MAIN_MENU_FRAME_X_START + 2, MAIN_MENU_FRAME_Y_START + 2 * (*input_menuIndex + 1), '@');
 }
 
+// Change active menu
 void changeMenuIndex(char inputChar, int* input_menuIndex)
 {
 	if (inputChar == UP_ARROW_CHAR)

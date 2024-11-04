@@ -9,9 +9,6 @@
 int currentScore = 0;
 int highScore = 0;
 
-// Snake
-
-
 void openGameWindow(void)
 {
 	displayFrame();

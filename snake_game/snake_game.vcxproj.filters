@@ -98,9 +98,6 @@
     <ClInclude Include="mainMenuFrame.h">
       <Filter>헤더 파일\frame\mainMenuFrame</Filter>
     </ClInclude>
-    <ClInclude Include="optionWindow.h">
-      <Filter>헤더 파일\frame\mainMenuFrame</Filter>
-    </ClInclude>
     <ClInclude Include="gameSystem.h">
       <Filter>헤더 파일\game</Filter>
     </ClInclude>
@@ -115,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="gameScoreFrame.h">
       <Filter>헤더 파일\frame\GameFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="optionWindow.h">
+      <Filter>헤더 파일\window</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

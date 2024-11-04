@@ -8,6 +8,8 @@
 
 int main()
 {
+	// Open terminal
+	// Start game
 	startGame();
 
 	return 0;

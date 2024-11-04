@@ -23,6 +23,9 @@ C language study
 
     C언어 배열, 포인터, 파일 관리 방법 스터디
 
+        C언어 링크드 리스트 구현 스터디
+            Snake 몸체 만드는 데 활용
+
         포인터 사용 시점
             구조체 (전반적인 configuration data)
             전역 변수
