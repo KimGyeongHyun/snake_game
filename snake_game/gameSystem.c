@@ -4,6 +4,13 @@
 #include <stdio.h>
 #include "mainWindow.h"
 
+void printGetchar()
+{
+	char c;
+	c = _getch();
+	printf("%d", c);
+}
+
 // Move cursor to (x, y)
 void gotoxy(int x, int y)
 {

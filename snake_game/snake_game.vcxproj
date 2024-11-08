@@ -138,6 +138,7 @@
     <ClCompile Include="mainWindow.c" />
     <ClCompile Include="mainMenuFrame.c" />
     <ClCompile Include="optionWindow.c" />
+    <ClCompile Include="snake.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameFrame.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="mainMenuFrame.h" />
     <ClInclude Include="mainWindow.h" />
     <ClInclude Include="optionWindow.h" />
+    <ClInclude Include="snake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,13 @@
 #pragma once
 
+#define UP_ARROW_CHAR				72
+#define BELOW_ARROW_CHAR			80
+#define LEFT_ARROW_CHAR				75
+#define RIGHT_ARROW_CHAR			77
+
+// Print getchar value
+void printGetchar(void);
+
 // Move cursor to (x, y)
 void gotoxy(int x, int y);
 

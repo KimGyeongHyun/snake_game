@@ -49,6 +49,12 @@
     <Filter Include="헤더 파일\frame\GameFrame">
       <UniqueIdentifier>{1f1fcf2d-0e7c-4214-88c6-58bbf7c91be8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\element\gameElement">
+      <UniqueIdentifier>{f882066a-6ef7-4c00-9047-0d6b1a0f72ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\element\gameElement">
+      <UniqueIdentifier>{9206eab4-dc6f-4334-9112-16610e486f17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -84,6 +90,9 @@
     <ClCompile Include="gameScoreFrame.c">
       <Filter>소스 파일\frame\GameFrame</Filter>
     </ClCompile>
+    <ClCompile Include="snake.c">
+      <Filter>소스 파일\element\gameElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainGame.h">
@@ -115,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="optionWindow.h">
       <Filter>헤더 파일\window</Filter>
+    </ClInclude>
+    <ClInclude Include="snake.h">
+      <Filter>헤더 파일\element\gameElement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

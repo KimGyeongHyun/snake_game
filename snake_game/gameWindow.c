@@ -21,8 +21,6 @@ void openGameWindow(void)
 
 	for (;;)
 	{
-		printChar(testInt, testInt, '@');
-		testInt++;
-		Sleep(1000);
+		printGetchar();
 	}
 }

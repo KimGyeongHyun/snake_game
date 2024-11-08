@@ -2,3 +2,4 @@ Ctrl + -: prev cursor
 Ctrl + Shift + -: next cursor
 Ctrl + K, C: Add comments
 Ctrl + K, U: Delete comments
+Ctrl + T: fast search move
