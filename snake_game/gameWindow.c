@@ -63,7 +63,7 @@ void openGameWindow(void)
 	showSnake(snakeHead);
 
 	// For Test
-	addRandomApple();
+	addRandomApple(snakeHead);
 	showApple();
 
 	for (;;)

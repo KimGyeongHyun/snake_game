@@ -11,11 +11,16 @@ C language study
 
                 apple 구현
 
+                    apple 생성 함수 구현 - 완료
+                        snake 와 가까이 있을 경우 스킵
+
                     gameWindow 에서 snake 확장 함수 사용
                         snake 와 apple 이 만날 경우 해당 함수 수행
 
-                    apple 도 snake 와 같이 동적으로 할당
-                        관리 방식 구상
+                    apple 자료 구조 - 완료
+                        2차원 배열 사용
+                        bool 사용하기
+
 
 
 
