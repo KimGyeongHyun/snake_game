@@ -1,10 +1,12 @@
 #include "snake.h"
 
 #include "gameSystem.h"
+#include "gameWindow.h"
 
 #include "stdlib.h"
 
 int snakeCount = 0;
+char prev_direction = UP_ARROW_CHAR;
 
 int countSnake(SnakeBody* input_snakeHead)
 {
@@ -61,7 +63,7 @@ void expandSnake(SnakeBody* input_snakeHead)
 	currBody->next = snakeTail;
 }
 
-void moveSnake(SnakeBody* input_snakeHead, char direction)
+enum Game_Window_ResCode moveSnake(SnakeBody* input_snakeHead, char direction)
 {
 	SnakeBody* currBody = input_snakeHead;
 	int currX = currBody->x;
@@ -69,13 +71,23 @@ void moveSnake(SnakeBody* input_snakeHead, char direction)
 	int prevX, prevY;
 
 	if (direction == UP_ARROW_CHAR)
+	{
 		currBody->y--;
-	if (direction == BELOW_ARROW_CHAR)
+	}
+	else if (direction == BELOW_ARROW_CHAR)
+	{
 		currBody->y++;
-	if (direction == LEFT_ARROW_CHAR)
+	}
+	else if (direction == LEFT_ARROW_CHAR)
+	{
 		currBody->x--;
-	if (direction == RIGHT_ARROW_CHAR)
+	}
+	else if (direction == RIGHT_ARROW_CHAR)
+	{
 		currBody->x++;
+	}
+
+	prev_direction = direction;
 
 	currBody = currBody->next;
 
@@ -97,6 +109,8 @@ void moveSnake(SnakeBody* input_snakeHead, char direction)
 		currBody = currBody->next;
 
 	} while (currBody != NULL);
+
+	return SURVIVE;
 }
 
 void showSnake(SnakeBody* input_snakeHead)
@@ -116,13 +130,19 @@ void showSnake(SnakeBody* input_snakeHead)
 	printChar(tailX, tailY, ' ');
 }
 
-void freeSnake()
+void freeSnake(SnakeBody* input_snakeHead)
 {
 
 }
 
-void snakeSystem(SnakeBody* input_snakeHead, char direction)
+enum Game_Window_ResCode snakeSystem(SnakeBody* input_snakeHead, char direction)
 {
-	moveSnake(input_snakeHead, direction);
+	enum Game_Window_ResCode resCode = moveSnake(input_snakeHead, direction);
+	if (resCode == DEAD)
+		return resCode;
+
 	showSnake(input_snakeHead);
+
+	resCode = SURVIVE;
+	return resCode;
 }

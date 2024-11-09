@@ -5,55 +5,29 @@ C language study
 # TODO
 
     game window 구상 및 작성
-        1. game frame 구현 - 완료
-        2. score frame 구현 - 완료
-        3. snake, apple, spike, score 등의 변수 선언 및 초기화
-            game window 에 선언, 하위 frame 이나 element 에서 제어하도록 구조 설계
-                snake 의 경우 링크드 리스트로 관리
+        1. snake, apple, spike, score 등의 기능 구현
 
-                이동 로직 구현
+            direction 을 받았을 경우 동작하게만 구현 (snake 모듈화 방식) - 완료
 
-                    // prevX 는 포인터에 갱신할 위치
-                    c// urrX 는 다음 포인터에 갱신할 위치
+                gameWindow 실행 파일에서 게임 조건을 추가하여 snake 가 움직이는 타이밍 조절
 
-                    현재 x를 currX 에 저장
-                    현재 x를 갱신
-                    포인터 이동
+                snake direction 이 이전 direction과 반대일 경우 동작하지 않아야 함
+                    ->snake 가 전에 이동한 direction 을 알아야 함
 
-                    반복
-                    {
-                        prevX 에 currX 저장
-                        현재 x를 currX 에 저장
-                        현재 x를 prevX로 갱신
-                        포인터 이동
-                    } 포인터가 NULL이 아닐 때까지 반복
+                    구현
+                        snake 내부에 이전에 이동한 extern direction 변수 추가
+                        gameWindow 단에서 해당 변수를 확인, 반대일 경우 적절하게 처리
 
+            snake 길이 증가 구현
+            apple 과 spike 구현
 
-                snake가 본인 위치만 알고 있을 때 showSnake 문제점
-                    마지막 snake 가 지나간 곳은 ' '로 지워야 함
-                    snakeBody 는 자기 자신의 위치 정보만 가지고 있고, 지나간 곳의 정보를 가지고 있지 않음
-                    snakeBody 객체로만은 showSnake 할 경우 지나간 곳에 대한 정보가 없기 때문에 지울 수가 없음
+            게임 조건 구현 (snake 모듈화 방식)
+                snake 가 gameFrame 에서만 동작하도록 구현
+                snake 가 본인 몸을 물었을 경우 게임 오버 구현
 
-                    해결점
-                        1. move 내 show 수행
-                            moveSnake 에 지나간 곳에 대한 정보가 남아 있음
-                            move 를 하면서 동시에 show 를 하면 가능함
-                            단점: move 와 show 모듈화 불가
-                        2. snake 가 지나간 자리에 대해서 정보를 가지게 하게끔 함 (tail 이후에 객체 하나 더 연결, 해당 객체는 지나간 자리를 나타냄)
-                            move와 show 모듈화 가능
-                            간단한 구현
-                            단점
-                                1. snake 객체에 snake 가 아닌 지나간 자리 객체 추가 -> 단일 책임 원칙 위반 가능성
+        2. 게임 작동 방식 구현
 
-                        2번 방법으로 해결 진행
-
-
-
-
-
-            keyboard 입력 define 은 system 쪽에 배치, menu 와 game 에서 둘 다 사용하도록 설계 - 완료
-        4. ms delay 구현
-            loop 문에 sleep 을 사용하여 카운터 적용
+            다른 브랜치에서 구상
 
 
     사용하지 않는 include 파일 제거
