@@ -13,10 +13,8 @@
 int currentScore = 0;
 int highScore = 0;
 char inputChar;
-enum Game_Window_ResCode resCode;
+enum Game_Window_ResCode gwResCode;
 enum Direction_Validation dirResCode;
-
-int testInt = 0;
 
 enum Direction_Validation dir_check(char inputChar)
 {
@@ -53,7 +51,7 @@ enum Direction_Validation dir_check(char inputChar)
 
 void openGameWindow(void)
 {
-	displayFrame();
+	displayEmptyWindow();
 
 	openGameFrame();
 
@@ -80,8 +78,8 @@ void openGameWindow(void)
 			inputChar == LEFT_ARROW_CHAR ||
 			inputChar == RIGHT_ARROW_CHAR)
 		{
-			resCode = snakeSystem(snakeHead, inputChar, apple);
-			if (resCode == DEAD)
+			gwResCode = snakeSystem(snakeHead, inputChar, apple);
+			if (gwResCode == DEAD)
 			{
 				freeSnake(snakeHead);
 				break;

@@ -1,5 +1,4 @@
 #include "gameFrame.h"
-
 #include "gameSystem.h"
 
 void openGameFrame(void)

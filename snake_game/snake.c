@@ -1,12 +1,10 @@
-#include "snake.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include <stdbool.h>
 
+#include "snake.h"
 #include "gameSystem.h"
 #include "gameWindow.h"
 #include "apple.h"
-
-
 
 int snakeCount = 0;
 char prev_direction = UP_ARROW_CHAR;
@@ -43,13 +41,13 @@ SnakeBody* createSnakeBody(int x, int y)
 SnakeBody* snakeInitialize()
 {
 	SnakeBody* init_snakeHead = createSnakeBody(SNAKE_START_X, SNAKE_START_Y);
-	SnakeBody* currBody = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 1);
-	SnakeBody* currBody2 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 2);
-	SnakeBody* currBody3 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 3);
+	SnakeBody* Body1 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 1);
+	SnakeBody* Body2 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 2);
+	SnakeBody* Body3 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 3);
 
-	init_snakeHead->next = currBody;
-	currBody->next = currBody2;
-	currBody2->next = currBody3;
+	init_snakeHead->next = Body1;
+	Body1->next = Body2;
+	Body2->next = Body3;
 
 	return init_snakeHead;
 }

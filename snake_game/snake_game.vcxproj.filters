@@ -25,17 +25,8 @@
     <Filter Include="헤더 파일\game">
       <UniqueIdentifier>{dca213fa-ca8a-4656-aa05-1035baf02ddb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\frame\mainMenuFrame">
-      <UniqueIdentifier>{a990a91d-922e-4578-a431-d7ecb0b926e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\frame\mainMenuFrame">
-      <UniqueIdentifier>{88ac3781-57f3-440d-906c-de78f0e12537}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\window">
       <UniqueIdentifier>{10dcf3bc-7f0f-4e61-a657-4d79e61689ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\frame\GameFrame">
-      <UniqueIdentifier>{1f173de5-e65c-429a-8b63-f742fa3dd3f2}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\window">
       <UniqueIdentifier>{ad7dd478-ce05-4b4a-94e4-d07385b39f44}</UniqueIdentifier>
@@ -46,14 +37,29 @@
     <Filter Include="헤더 파일\element">
       <UniqueIdentifier>{407cc704-4ba3-47d6-9c91-14e2276f96d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\frame\GameFrame">
+    <Filter Include="소스 파일\frame\GameWindowFrame">
+      <UniqueIdentifier>{1f173de5-e65c-429a-8b63-f742fa3dd3f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\frame\mainMenuWindowFrame">
+      <UniqueIdentifier>{88ac3781-57f3-440d-906c-de78f0e12537}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\frame\GameWindowFrame">
       <UniqueIdentifier>{1f1fcf2d-0e7c-4214-88c6-58bbf7c91be8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\element\gameElement">
+    <Filter Include="헤더 파일\frame\mainMenuWindowFrame">
+      <UniqueIdentifier>{a990a91d-922e-4578-a431-d7ecb0b926e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\element\gameFrameElement">
       <UniqueIdentifier>{f882066a-6ef7-4c00-9047-0d6b1a0f72ac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\element\gameElement">
+    <Filter Include="소스 파일\element\gameFrameElement">
       <UniqueIdentifier>{9206eab4-dc6f-4334-9112-16610e486f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\element\mainMenuFrameElement">
+      <UniqueIdentifier>{53fa344b-9801-4cff-9c77-4188301024b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\element\mainMenuFrameElement">
+      <UniqueIdentifier>{e7ec2a7d-e8f1-4878-9222-dfc1f0c51675}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,19 +69,16 @@
     <ClCompile Include="mainGame.c">
       <Filter>소스 파일\game</Filter>
     </ClCompile>
-    <ClCompile Include="gameData.c">
-      <Filter>소스 파일\game</Filter>
-    </ClCompile>
     <ClCompile Include="logoframe.c">
-      <Filter>소스 파일\frame\mainMenuFrame</Filter>
+      <Filter>소스 파일\frame\mainMenuWindowFrame</Filter>
     </ClCompile>
     <ClCompile Include="mainMenuFrame.c">
-      <Filter>소스 파일\frame\mainMenuFrame</Filter>
+      <Filter>소스 파일\frame\mainMenuWindowFrame</Filter>
     </ClCompile>
     <ClCompile Include="gameWindow.c">
       <Filter>소스 파일\window</Filter>
     </ClCompile>
-    <ClCompile Include="mainWindow.c">
+    <ClCompile Include="mainMenuWindow.c">
       <Filter>소스 파일\window</Filter>
     </ClCompile>
     <ClCompile Include="optionWindow.c">
@@ -85,30 +88,30 @@
       <Filter>소스 파일\game</Filter>
     </ClCompile>
     <ClCompile Include="gameFrame.c">
-      <Filter>소스 파일\frame\GameFrame</Filter>
+      <Filter>소스 파일\frame\GameWindowFrame</Filter>
     </ClCompile>
     <ClCompile Include="gameScoreFrame.c">
-      <Filter>소스 파일\frame\GameFrame</Filter>
+      <Filter>소스 파일\frame\GameWindowFrame</Filter>
     </ClCompile>
     <ClCompile Include="snake.c">
-      <Filter>소스 파일\element\gameElement</Filter>
+      <Filter>소스 파일\element\gameFrameElement</Filter>
     </ClCompile>
     <ClCompile Include="apple.c">
-      <Filter>소스 파일\element\gameElement</Filter>
+      <Filter>소스 파일\element\gameFrameElement</Filter>
+    </ClCompile>
+    <ClCompile Include="mainMenu.c">
+      <Filter>소스 파일\element\mainMenuFrameElement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainGame.h">
       <Filter>헤더 파일\game</Filter>
     </ClInclude>
-    <ClInclude Include="gameData.h">
-      <Filter>헤더 파일\game</Filter>
-    </ClInclude>
     <ClInclude Include="logoframe.h">
-      <Filter>헤더 파일\frame\mainMenuFrame</Filter>
+      <Filter>헤더 파일\frame\mainMenuWindowFrame</Filter>
     </ClInclude>
     <ClInclude Include="mainMenuFrame.h">
-      <Filter>헤더 파일\frame\mainMenuFrame</Filter>
+      <Filter>헤더 파일\frame\mainMenuWindowFrame</Filter>
     </ClInclude>
     <ClInclude Include="gameSystem.h">
       <Filter>헤더 파일\game</Filter>
@@ -116,23 +119,26 @@
     <ClInclude Include="gameWindow.h">
       <Filter>헤더 파일\window</Filter>
     </ClInclude>
-    <ClInclude Include="mainWindow.h">
+    <ClInclude Include="mainMenuWindow.h">
       <Filter>헤더 파일\window</Filter>
     </ClInclude>
     <ClInclude Include="gameFrame.h">
-      <Filter>헤더 파일\frame\GameFrame</Filter>
+      <Filter>헤더 파일\frame\GameWindowFrame</Filter>
     </ClInclude>
     <ClInclude Include="gameScoreFrame.h">
-      <Filter>헤더 파일\frame\GameFrame</Filter>
+      <Filter>헤더 파일\frame\GameWindowFrame</Filter>
     </ClInclude>
     <ClInclude Include="optionWindow.h">
       <Filter>헤더 파일\window</Filter>
     </ClInclude>
     <ClInclude Include="snake.h">
-      <Filter>헤더 파일\element\gameElement</Filter>
+      <Filter>헤더 파일\element\gameFrameElement</Filter>
     </ClInclude>
     <ClInclude Include="apple.h">
-      <Filter>헤더 파일\element\gameElement</Filter>
+      <Filter>헤더 파일\element\gameFrameElement</Filter>
+    </ClInclude>
+    <ClInclude Include="mainMenu.h">
+      <Filter>헤더 파일\element\mainMenuFrameElement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,15 +1,9 @@
-#include "gameSystem.h"
 #include <conio.h>
 #include <Windows.h>
 #include <stdio.h>
-#include "mainWindow.h"
 
-void printGetchar()
-{
-	char c;
-	c = _getch();
-	printf("%d", c);
-}
+#include "gameSystem.h"
+#include "mainMenuWindow.h"
 
 // Move cursor to (x, y)
 void gotoxy(int x, int y)
@@ -21,15 +15,15 @@ void gotoxy(int x, int y)
 // Move cursor to end
 void gotoEnd()
 {
-	gotoxy(WINDOW_WIDTH - 1, WINDOW_HEIGHT - 1);
+	gotoxy(MAIN_WINDOW_WIDTH - 1, MAIN_WINDOW_HEIGHT - 1);
 }
 
 // Display c(char) in (x, y)
 void printChar(int x, int y, char c)
 {
 	// validation x, y coordinate
-	if (x < 0 || x >= WINDOW_WIDTH)		return;
-	if (y < 0 || y >= WINDOW_HEIGHT)	return;
+	if (x < 0 || x >= MAIN_WINDOW_WIDTH)		return;
+	if (y < 0 || y >= MAIN_WINDOW_HEIGHT)	return;
 
 	// Move cursor to (x, y)
 	gotoxy(x, y);
@@ -40,21 +34,21 @@ void printChar(int x, int y, char c)
 	gotoEnd();
 }
 
-// Display empty frame
-void displayFrame(void)
+// Display empty window (window)
+void displayEmptyWindow(void)
 {
 	gotoxy(0, 0);
 
-	for (int i = 0; i < WINDOW_HEIGHT; i++)
+	for (int i = 0; i < MAIN_WINDOW_HEIGHT; i++)
 	{
-		if (i == 0 || i == WINDOW_HEIGHT - 1)	// Upper & below
+		if (i == 0 || i == MAIN_WINDOW_HEIGHT - 1)	// Upper & below
 			printf("\n****************************************************************************************************");
 		else									// Middle
 			printf("\n*                                                                                                  *");
 	}
 }
 
-// Draw square
+// Draw square (Frame)
 void printSquare(int inputX, int inputY, int inputWidth, int inputHeight)
 {
 

@@ -1,5 +1,4 @@
 #include "gameScoreFrame.h"
-
 #include "gameSystem.h"
 
 void openGameScoreFrame(void)

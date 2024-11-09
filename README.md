@@ -2,24 +2,51 @@
 
 C language study
 
+# 작동 방식
+
+    Window, Frame, Element
+        Window: 터미널을 가득 채우는 윈도우
+            - Main menu window
+            - Game window
+        Frame: 윈도우 내부 작은 프레임
+            - Main menu frame
+            - Logo frame
+            - Score frame
+            - game frame
+            ...
+        Element: 프레임 내부 실제 게임 데이터가 표현되는 요소
+            - snake
+            - apple, spike
+            - score
+            ...
+
+    Window 에서 Frame 객체 생성,
+    Frame 에서 Element 객체 생성
+
 # TODO
+
+    menu 도 element 로 봐야할지 생각, 구상 - 완료
+        element 로 보고 window 를 변경할 땐 해당 element 를 참고만 하는 방식으로 작성하기
+
+    snake, apple 출력 방식 검토
+        현재 gameWindow 에서 Element 내 출력 함수를 불러와 출력 중
+        gameFrame 에서 작동하는 코드는 empty frame 출력 뿐
+        gameFream 에서 element 출력이 되어야 함
+        Windown 와 Frame 에서 선언해야 하는 변수를 명확하게 구별할 필요 있음
+            score 는 window, 그 외 snake, apple, spike 는 frame ...
+
+    코드 다듬기
+        gameWindow 에서 각 element 호출 방식 재확인
+        gameWindow, snake, apple 함수, 변수 정리, 리팩토링
+        주석 추가
+        향후 수정할 점 정리
 
     game window 구상 및 작성
         1. snake, apple, spike, score 등의 기능 구현
 
-            snake 길이 증가, apple 구현
-
-                apple 구현
-
-                    gameWindow 에서 snake 확장 함수 사용
-                        snake 와 apple 이 만날 경우 해당 함수 수행
-
-                        gameWindow 에서 뱀의 머리쪽에 사과가 있는지 검사
-                        뱀이 움직이기 전에 움직이는 위치에 사과가 있는지 검사하고 뱀을 미리 확장해야 함
-                        -> apple element 에서 _getch() 를 직접 분석해서 처리하는 방법이 제일 좋아보임
-
-
-
+            snake 길이에 따른 apple 랜덤 추가 구현
+                snake 길이 리턴 함수 구현
+                향후 spike 도 해당 타이밍에 함께 추가
 
             게임 조건 구현 (snake 모듈화 방식)
                 snake 가 gameFrame 에서만 동작하도록 구현
@@ -38,9 +65,6 @@ C language study
 # Long view
 
     C언어 배열, 포인터, 파일 관리 방법 스터디
-
-        C언어 링크드 리스트 구현 스터디
-            Snake 몸체 만드는 데 활용
 
         포인터 사용 시점
             구조체 (전반적인 configuration data)

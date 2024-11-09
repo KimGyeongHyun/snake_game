@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdbool.h>
+
 #include "gameFrame.h"
 
 // Snake head start index

@@ -5,9 +5,6 @@
 #define LEFT_ARROW_CHAR				75
 #define RIGHT_ARROW_CHAR			77
 
-// Print getchar value
-void printGetchar(void);
-
 // Move cursor to (x, y)
 void gotoxy(int x, int y);
 
@@ -18,9 +15,10 @@ void gotoEnd();
 void printChar(int x, int y, char c);
 
 // print empty frame
-void displayFrame(void);
+void displayEmptyWindow(void);
 
 // draw frame
 void printSquare(int inputX, int inputY, int inputWidth, int inputHeight);
 
+// print string
 void printString(int inputX, int inputY, char str[], int strLength);

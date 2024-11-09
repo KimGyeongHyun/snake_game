@@ -1,7 +1,7 @@
-#include "apple.h"
 #include <stdlib.h>
 #include <time.h>
 
+#include "apple.h"
 #include "gameSystem.h"
 
 bool apple[][GAME_FRAME_WIDTH - 2] = {false,};

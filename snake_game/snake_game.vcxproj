@@ -131,12 +131,12 @@
     <ClCompile Include="gameFrame.c" />
     <ClCompile Include="gameScoreFrame.c" />
     <ClCompile Include="gameSystem.c" />
-    <ClCompile Include="gameData.c" />
     <ClCompile Include="gameWindow.c" />
     <ClCompile Include="logoframe.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="mainGame.c" />
-    <ClCompile Include="mainWindow.c" />
+    <ClCompile Include="mainMenu.c" />
+    <ClCompile Include="mainMenuWindow.c" />
     <ClCompile Include="mainMenuFrame.c" />
     <ClCompile Include="optionWindow.c" />
     <ClCompile Include="snake.c" />
@@ -146,12 +146,12 @@
     <ClInclude Include="gameFrame.h" />
     <ClInclude Include="gameScoreFrame.h" />
     <ClInclude Include="gameSystem.h" />
-    <ClInclude Include="gameData.h" />
     <ClInclude Include="gameWindow.h" />
     <ClInclude Include="logoframe.h" />
     <ClInclude Include="mainGame.h" />
+    <ClInclude Include="mainMenu.h" />
     <ClInclude Include="mainMenuFrame.h" />
-    <ClInclude Include="mainWindow.h" />
+    <ClInclude Include="mainMenuWindow.h" />
     <ClInclude Include="optionWindow.h" />
     <ClInclude Include="snake.h" />
   </ItemGroup>
