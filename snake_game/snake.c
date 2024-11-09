@@ -1,9 +1,12 @@
 #include "snake.h"
+#include "stdlib.h"
+#include <stdbool.h>
 
 #include "gameSystem.h"
 #include "gameWindow.h"
+#include "apple.h"
 
-#include "stdlib.h"
+
 
 int snakeCount = 0;
 char prev_direction = UP_ARROW_CHAR;
@@ -51,41 +54,25 @@ SnakeBody* snakeInitialize()
 	return init_snakeHead;
 }
 
-void expandSnake(SnakeBody* input_snakeHead)
-{
-	SnakeBody* currBody = input_snakeHead;
-	do
-	{
-		currBody = currBody->next;
-	} while (currBody->next != NULL);
-
-	SnakeBody* snakeTail = createSnakeBody(currBody->x, currBody->y);
-	currBody->next = snakeTail;
-}
-
-enum Game_Window_ResCode moveSnake(SnakeBody* input_snakeHead, char direction)
+enum Game_Window_ResCode moveSnake(SnakeBody* input_snakeHead, char direction, bool input_apple[][GAME_FRAME_WIDTH - 2])
 {
 	SnakeBody* currBody = input_snakeHead;
 	int currX = currBody->x;
 	int currY = currBody->y;
 	int prevX, prevY;
+	int addSnakeFlag = false;
 
 	if (direction == UP_ARROW_CHAR)
-	{
 		currBody->y--;
-	}
 	else if (direction == BELOW_ARROW_CHAR)
-	{
 		currBody->y++;
-	}
 	else if (direction == LEFT_ARROW_CHAR)
-	{
 		currBody->x--;
-	}
 	else if (direction == RIGHT_ARROW_CHAR)
-	{
 		currBody->x++;
-	}
+
+	if (checkEatApple(currBody->x, currBody->y))
+		addSnakeFlag = true;
 
 	prev_direction = direction;
 
@@ -108,7 +95,29 @@ enum Game_Window_ResCode moveSnake(SnakeBody* input_snakeHead, char direction)
 		// Move to next object
 		currBody = currBody->next;
 
-	} while (currBody != NULL);
+	} while (currBody->next != NULL);
+
+	// Save position of current 
+	prevX = currX;
+	prevY = currY;
+
+	// Save position of next
+	if (currBody == NULL)
+	{
+		exit(1);
+	}
+	currX = currBody->x;
+	currY = currBody->y;
+
+	// Update position to current
+	currBody->x = prevX;
+	currBody->y = prevY;
+
+	if (addSnakeFlag)
+	{
+		SnakeBody* SnakeTail = createSnakeBody(currX, currY);
+		currBody->next = SnakeTail;
+	}
 
 	return SURVIVE;
 }
@@ -135,9 +144,9 @@ void freeSnake(SnakeBody* input_snakeHead)
 
 }
 
-enum Game_Window_ResCode snakeSystem(SnakeBody* input_snakeHead, char direction)
+enum Game_Window_ResCode snakeSystem(SnakeBody* input_snakeHead, char direction, bool input_apple[][GAME_FRAME_WIDTH-2])
 {
-	enum Game_Window_ResCode resCode = moveSnake(input_snakeHead, direction);
+	enum Game_Window_ResCode resCode = moveSnake(input_snakeHead, direction, input_apple);
 	if (resCode == DEAD)
 		return resCode;
 

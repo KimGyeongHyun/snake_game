@@ -70,5 +70,17 @@ void showApple()
 				printChar(x + GAME_FRAME_X_START + 1, y + GAME_FRAME_Y_START + 1, ' ');
 		}
 	}
-	
+}
+
+bool checkEatApple(int x, int y)
+{
+	if (apple[y - GAME_FRAME_Y_START - 1][x - GAME_FRAME_X_START - 1])
+	{
+		apple[y - GAME_FRAME_Y_START - 1][x - GAME_FRAME_X_START - 1] = false;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

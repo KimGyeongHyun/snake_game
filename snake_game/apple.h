@@ -10,3 +10,4 @@ extern bool apple[GAME_FRAME_HEIGHT-2][GAME_FRAME_WIDTH-2];
 
 void addRandomApple(SnakeBody* input_SnakeHead);
 void showApple();
+bool checkEatApple(int x, int y);

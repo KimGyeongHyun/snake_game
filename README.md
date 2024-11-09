@@ -11,15 +11,12 @@ C language study
 
                 apple 구현
 
-                    apple 생성 함수 구현 - 완료
-                        snake 와 가까이 있을 경우 스킵
-
                     gameWindow 에서 snake 확장 함수 사용
                         snake 와 apple 이 만날 경우 해당 함수 수행
 
-                    apple 자료 구조 - 완료
-                        2차원 배열 사용
-                        bool 사용하기
+                        gameWindow 에서 뱀의 머리쪽에 사과가 있는지 검사
+                        뱀이 움직이기 전에 움직이는 위치에 사과가 있는지 검사하고 뱀을 미리 확장해야 함
+                        -> apple element 에서 _getch() 를 직접 분석해서 처리하는 방법이 제일 좋아보임
 
 
 

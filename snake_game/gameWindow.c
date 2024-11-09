@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <conio.h>
+#include <stdbool.h>
 
 #include "gameSystem.h"
 #include "gameWindow.h"
@@ -60,11 +61,10 @@ void openGameWindow(void)
 
 	SnakeBody* snakeHead = snakeInitialize();
 
-	showSnake(snakeHead);
-
-	// For Test
 	addRandomApple(snakeHead);
 	showApple();
+
+	showSnake(snakeHead);
 
 	for (;;)
 	{
@@ -80,13 +80,12 @@ void openGameWindow(void)
 			inputChar == LEFT_ARROW_CHAR ||
 			inputChar == RIGHT_ARROW_CHAR)
 		{
-			resCode = snakeSystem(snakeHead, inputChar);
+			resCode = snakeSystem(snakeHead, inputChar, apple);
 			if (resCode == DEAD)
 			{
 				freeSnake(snakeHead);
 				break;
 			}
 		}
-		
 	}
 }
