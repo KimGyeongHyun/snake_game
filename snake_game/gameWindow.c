@@ -6,6 +6,7 @@
 #include "gameFrame.h"
 #include "gameScoreFrame.h"
 #include "snake.h"
+#include "apple.h"
 
 // Scores
 int currentScore = 0;
@@ -60,6 +61,10 @@ void openGameWindow(void)
 	SnakeBody* snakeHead = snakeInitialize();
 
 	showSnake(snakeHead);
+
+	// For Test
+	addRandomApple();
+	showApple();
 
 	for (;;)
 	{
