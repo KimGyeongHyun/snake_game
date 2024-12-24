@@ -8,16 +8,22 @@
 #include "logoframe.h"
 #include "mainMenuFrame.h"
 
-void openMainMenuWindow(void)
+void displayMainMenuWindowFrames(void)
 {
 	// Display empty window
-	displayEmptyWindow();					
+	displayEmptyWindow();
 
 	// Display logo frame
 	displayLogoFrame();
 
 	// Display main menu frame
 	displayMainMenuFrame();
+}
+
+void openMainMenuWindow(void)
+{
+	// draw all main menu frames
+	displayMainMenuWindowFrames();
 
 	// Display main menu
 	displayMainMenuInFrame();
