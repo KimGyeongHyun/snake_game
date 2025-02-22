@@ -15,24 +15,47 @@ int highScore = 0;
 char inputChar;
 enum Game_Window_ResCode gwResCode;
 enum Direction_Validation dirResCode;
-int counterTh = 1000;
 
-void displayMainGameFrames(void)
+enum Direction_Validation dir_check(char inputChar)
 {
-	// display empty window
-	displayEmptyWindow();
+	switch (prev_direction)
+	{
+	case UP_ARROW_CHAR:
+		if (inputChar == BELOW_ARROW_CHAR)
+			return DIR_NO;
+		else
+			return DIR_OK;
+		break;
+	case BELOW_ARROW_CHAR:
+		if (inputChar == UP_ARROW_CHAR)
+			return DIR_NO;
+		else
+			return DIR_OK;
+		break;
+	case LEFT_ARROW_CHAR:
+		if (inputChar == RIGHT_ARROW_CHAR)
+			return DIR_NO;
+		else
+			return DIR_OK;
+		break;
+	case RIGHT_ARROW_CHAR:
+		if (inputChar == LEFT_ARROW_CHAR)
+			return DIR_NO;
+		else
+			return DIR_OK;
+		break;
+	}
 
-	// display game frame
-	openGameFrame();
-
-	// display game score frame
-	openGameScoreFrame();
+	return DIR_NO;
 }
 
 void openGameWindow(void)
 {
-	// display all game frames
-	displayMainGameFrames();
+	displayEmptyWindow();
+
+	openGameFrame();
+
+	openGameScoreFrame();
 
 	SnakeBody* snakeHead = snakeInitialize();
 
@@ -43,8 +66,24 @@ void openGameWindow(void)
 
 	for (;;)
 	{
-		gwResCode = processingGame(snakeHead, counterTh);
+		inputChar = _getch();
 
-		if (gwResCode == DEAD) break;
+		dirResCode = dir_check(inputChar);
+
+		if (dirResCode == DIR_NO)
+			continue;
+
+		if (inputChar == UP_ARROW_CHAR ||
+			inputChar == BELOW_ARROW_CHAR ||
+			inputChar == LEFT_ARROW_CHAR ||
+			inputChar == RIGHT_ARROW_CHAR)
+		{
+			gwResCode = snakeSystem(snakeHead, inputChar, apple);
+			if (gwResCode == DEAD)
+			{
+				freeSnake(snakeHead);
+				break;
+			}
+		}
 	}
 }

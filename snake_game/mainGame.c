@@ -56,7 +56,6 @@ void startGame()
 			menuToWindowMapping();
 
 			break;
-
 		case WINDOW_GAME:
 			// Game window
 			// Play game in this window
@@ -66,7 +65,6 @@ void startGame()
 			windowIndex = WINDOW_MAIN_MENU;
 
 			break;
-
 		case WINDOW_OPTION:
 			// Option window
 			openOptionWindow();

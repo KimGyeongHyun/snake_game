@@ -6,20 +6,13 @@
 #include "gameWindow.h"
 #include "apple.h"
 
-// snake length
-static int snakeCount = 0;
-
-// snake prevent direction
+int snakeCount = 0;
 char prev_direction = UP_ARROW_CHAR;
 
-// return snake length
 int countSnake(SnakeBody* input_snakeHead)
 {
-	
 	snakeCount = 0;
 	SnakeBody* currBody = input_snakeHead;
-
-	// count snake body
 	do
 	{
 		snakeCount++;
@@ -29,7 +22,6 @@ int countSnake(SnakeBody* input_snakeHead)
 	return snakeCount;
 }
 
-// create one snake body and return
 SnakeBody* createSnakeBody(int x, int y)
 {
 	SnakeBody* newSnakeBody = (SnakeBody*)malloc(sizeof(SnakeBody));
@@ -40,41 +32,28 @@ SnakeBody* createSnakeBody(int x, int y)
 		exit(1);
 	}
 
-	// initialize and return body
 	newSnakeBody->x = x;
 	newSnakeBody->y = y;
 	newSnakeBody->next = NULL;
 	return newSnakeBody;
 }
 
-// connect body to snake tail
-void connectSnake(SnakeBody* prev_tail, SnakeBody* curr_body)
-{
-	prev_tail->next = curr_body;
-}
-
 SnakeBody* snakeInitialize()
 {
-	// create bodies
 	SnakeBody* init_snakeHead = createSnakeBody(SNAKE_START_X, SNAKE_START_Y);
 	SnakeBody* Body1 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 1);
 	SnakeBody* Body2 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 2);
 	SnakeBody* Body3 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 3);
 
-	// connect bodies
-	connectSnake(init_snakeHead, Body1);
-	connectSnake(Body1, Body2);
-	connectSnake(Body2, Body3);
+	init_snakeHead->next = Body1;
+	Body1->next = Body2;
+	Body2->next = Body3;
 
-	// return head
 	return init_snakeHead;
 }
 
-// get arrow data and move snake
-enum Game_Window_ResCode moveSnake(SnakeBody* input_snakeHead, char direction)
+enum Game_Window_ResCode moveSnake(SnakeBody* input_snakeHead, char direction, bool input_apple[][GAME_FRAME_WIDTH - 2])
 {
-
-	// get snake head and initialize data
 	SnakeBody* currBody = input_snakeHead;
 	int currX = currBody->x;
 	int currY = currBody->y;
@@ -163,9 +142,9 @@ void freeSnake(SnakeBody* input_snakeHead)
 
 }
 
-enum Game_Window_ResCode snakeSystem(SnakeBody* input_snakeHead, char direction)
+enum Game_Window_ResCode snakeSystem(SnakeBody* input_snakeHead, char direction, bool input_apple[][GAME_FRAME_WIDTH-2])
 {
-	enum Game_Window_ResCode resCode = moveSnake(input_snakeHead, direction);
+	enum Game_Window_ResCode resCode = moveSnake(input_snakeHead, direction, input_apple);
 	if (resCode == DEAD)
 		return resCode;
 
