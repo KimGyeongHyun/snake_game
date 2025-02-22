@@ -6,9 +6,12 @@
 #include "snake.h"
 
 #define ADD_APPLE_COUNT		7
+#define ADD_SPIKE_COUNT		3
 
 extern bool apple[GAME_FRAME_HEIGHT - 2][GAME_FRAME_WIDTH - 2];
+extern bool spike[GAME_FRAME_HEIGHT - 2][GAME_FRAME_WIDTH - 2];
 
 void addRandomApple(SnakeBody* input_SnakeHead);
-void showApple();
+void addRandomSpike(SnakeBody* input_SnakeHead);
+void showAppleSpike();
 bool checkEatApple(int x, int y);

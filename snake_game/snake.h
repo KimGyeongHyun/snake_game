@@ -8,15 +8,22 @@
 #define SNAKE_START_X	50
 #define SNAKE_START_Y	16
 
+enum SnakeMoveValid
+{
+	SNAKE_MOVE_OK = 0,
+	SNAKE_MOVE_NO,
+};
+
 typedef struct SNAKE_BODY {
 	int x, y;
 	struct SNAKE_BODY* next;
 }SnakeBody;
 
-extern char prev_direction;
+enum SnakeMoveValid prev_direction;
 
+SnakeBody* createSnakeBody(int x, int y);
 int countSnake(SnakeBody* input_snakeHead);
 SnakeBody* snakeInitialize();
+SnakeBody* moveSnakeAndAdd(SnakeBody* input_snakeHead, char input_direction, bool add_flag);
 void showSnake(SnakeBody* input_snakeHead);
-void freeSnake(SnakeBody* input_snakeHead);
-enum Game_Window_ResCode snakeSystem(SnakeBody* input_snakeHead, char direction, bool input_apple[][GAME_FRAME_WIDTH - 2]);
+void freeSnake(SnakeBody** input_snakeHead);

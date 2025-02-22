@@ -7,7 +7,8 @@
 #include "gameFrame.h"
 #include "gameScoreFrame.h"
 #include "snake.h"
-#include "apple.h"
+#include "appleSpike.h"
+#include "moveResult.h"
 
 // Scores
 int currentScore = 0;
@@ -51,6 +52,9 @@ enum Direction_Validation dir_check(char inputChar)
 
 void openGameWindow(void)
 {
+
+	enum MoveResult res = MOVE_IDLE;
+
 	displayEmptyWindow();
 
 	openGameFrame();
@@ -60,30 +64,23 @@ void openGameWindow(void)
 	SnakeBody* snakeHead = snakeInitialize();
 
 	addRandomApple(snakeHead);
-	showApple();
-
+	addRandomSpike(snakeHead);
+	showAppleSpike();
 	showSnake(snakeHead);
 
 	for (;;)
 	{
 		inputChar = _getch();
 
-		dirResCode = dir_check(inputChar);
-
-		if (dirResCode == DIR_NO)
-			continue;
-
 		if (inputChar == UP_ARROW_CHAR ||
 			inputChar == BELOW_ARROW_CHAR ||
 			inputChar == LEFT_ARROW_CHAR ||
 			inputChar == RIGHT_ARROW_CHAR)
 		{
-			gwResCode = snakeSystem(snakeHead, inputChar, apple);
-			if (gwResCode == DEAD)
-			{
-				freeSnake(snakeHead);
-				break;
-			}
+			// 25.02.22 return result of move
+			res = move_result(&snakeHead, inputChar);
+			showSnake(snakeHead);
+
 		}
 	}
 }

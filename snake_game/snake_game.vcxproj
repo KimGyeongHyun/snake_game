@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="apple.c" />
+    <ClCompile Include="appleSpike.c" />
     <ClCompile Include="gameFrame.c" />
     <ClCompile Include="gameScoreFrame.c" />
     <ClCompile Include="gameSystem.c" />
@@ -138,11 +138,12 @@
     <ClCompile Include="mainMenu.c" />
     <ClCompile Include="mainMenuWindow.c" />
     <ClCompile Include="mainMenuFrame.c" />
+    <ClCompile Include="moveResult.c" />
     <ClCompile Include="optionWindow.c" />
     <ClCompile Include="snake.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="apple.h" />
+    <ClInclude Include="appleSpike.h" />
     <ClInclude Include="gameFrame.h" />
     <ClInclude Include="gameScoreFrame.h" />
     <ClInclude Include="gameSystem.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="mainMenu.h" />
     <ClInclude Include="mainMenuFrame.h" />
     <ClInclude Include="mainMenuWindow.h" />
+    <ClInclude Include="moveResult.h" />
     <ClInclude Include="optionWindow.h" />
     <ClInclude Include="snake.h" />
   </ItemGroup>

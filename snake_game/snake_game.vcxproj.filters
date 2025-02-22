@@ -96,11 +96,14 @@
     <ClCompile Include="snake.c">
       <Filter>소스 파일\element\gameFrameElement</Filter>
     </ClCompile>
-    <ClCompile Include="apple.c">
+    <ClCompile Include="appleSpike.c">
       <Filter>소스 파일\element\gameFrameElement</Filter>
     </ClCompile>
     <ClCompile Include="mainMenu.c">
       <Filter>소스 파일\element\mainMenuFrameElement</Filter>
+    </ClCompile>
+    <ClCompile Include="moveResult.c">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -134,11 +137,14 @@
     <ClInclude Include="snake.h">
       <Filter>헤더 파일\element\gameFrameElement</Filter>
     </ClInclude>
-    <ClInclude Include="apple.h">
+    <ClInclude Include="appleSpike.h">
       <Filter>헤더 파일\element\gameFrameElement</Filter>
     </ClInclude>
     <ClInclude Include="mainMenu.h">
       <Filter>헤더 파일\element\mainMenuFrameElement</Filter>
+    </ClInclude>
+    <ClInclude Include="moveResult.h">
+      <Filter>헤더 파일\element\gameFrameElement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
