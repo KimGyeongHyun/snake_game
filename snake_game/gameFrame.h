@@ -6,3 +6,4 @@
 #define GAME_FRAME_HEIGHT		16
 
 void openGameFrame(void);
+void resetGameFrame(void);

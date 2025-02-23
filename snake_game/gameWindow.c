@@ -7,7 +7,8 @@
 #include "gameFrame.h"
 #include "gameScoreFrame.h"
 #include "snake.h"
-#include "apple.h"
+#include "appleSpike.h"
+#include "moveResult.h"
 
 // Scores
 int currentScore = 0;
@@ -16,74 +17,57 @@ char inputChar;
 enum Game_Window_ResCode gwResCode;
 enum Direction_Validation dirResCode;
 
-enum Direction_Validation dir_check(char inputChar)
+// init apple, spike, snake
+static SnakeBody* initGameParameter()
 {
-	switch (prev_direction)
-	{
-	case UP_ARROW_CHAR:
-		if (inputChar == BELOW_ARROW_CHAR)
-			return DIR_NO;
-		else
-			return DIR_OK;
-		break;
-	case BELOW_ARROW_CHAR:
-		if (inputChar == UP_ARROW_CHAR)
-			return DIR_NO;
-		else
-			return DIR_OK;
-		break;
-	case LEFT_ARROW_CHAR:
-		if (inputChar == RIGHT_ARROW_CHAR)
-			return DIR_NO;
-		else
-			return DIR_OK;
-		break;
-	case RIGHT_ARROW_CHAR:
-		if (inputChar == LEFT_ARROW_CHAR)
-			return DIR_NO;
-		else
-			return DIR_OK;
-		break;
-	}
+	SnakeBody* snakeHead = snakeInitialize();
 
-	return DIR_NO;
+	initAppleAndSpike();
+	addRandomApple(snakeHead);
+	addRandomSpike(snakeHead);
+	return snakeHead;
+}
+
+// init show apple, spike, snake
+static void showGameObject(SnakeBody* input_snake_body)
+{
+	showAppleSpike();
+	showSnake(input_snake_body);
 }
 
 void openGameWindow(void)
 {
+	enum MoveResult res = MOVE_IDLE;
+
 	displayEmptyWindow();
 
 	openGameFrame();
 
 	openGameScoreFrame();
 
-	SnakeBody* snakeHead = snakeInitialize();
+	SnakeBody* snakeHead = initGameParameter();
 
-	addRandomApple(snakeHead);
-	showApple();
+	showGameObject(snakeHead);
 
-	showSnake(snakeHead);
 
 	for (;;)
 	{
 		inputChar = _getch();
-
-		dirResCode = dir_check(inputChar);
-
-		if (dirResCode == DIR_NO)
-			continue;
 
 		if (inputChar == UP_ARROW_CHAR ||
 			inputChar == BELOW_ARROW_CHAR ||
 			inputChar == LEFT_ARROW_CHAR ||
 			inputChar == RIGHT_ARROW_CHAR)
 		{
-			gwResCode = snakeSystem(snakeHead, inputChar, apple);
-			if (gwResCode == DEAD)
-			{
-				freeSnake(snakeHead);
+
+			// 25.02.22 return result of move
+			res = move_result(&snakeHead, inputChar);
+
+			if (res == MOVE_DIE)	
 				break;
-			}
+
+			showGameObject(snakeHead);
+
 		}
 	}
 }

@@ -13,10 +13,18 @@ typedef struct SNAKE_BODY {
 	struct SNAKE_BODY* next;
 }SnakeBody;
 
-extern char prev_direction;
+typedef struct NEW_HEAD_XY
+{
+	int x, y;
+}NewHeadXY;
 
+char prev_direction;
+
+SnakeBody* createSnakeBody(int x, int y);
 int countSnake(SnakeBody* input_snakeHead);
+enum MoveResult checkForwardMove(char input_direction);
+enum MoveResult checkEatBody(SnakeBody* input_snakeHead, NewHeadXY input_headXY);
 SnakeBody* snakeInitialize();
+SnakeBody* moveSnakeAndAdd(SnakeBody* input_snakeHead, char input_direction, bool add_flag);
 void showSnake(SnakeBody* input_snakeHead);
-void freeSnake(SnakeBody* input_snakeHead);
-enum Game_Window_ResCode snakeSystem(SnakeBody* input_snakeHead, char direction, bool input_apple[][GAME_FRAME_WIDTH - 2]);
+void freeSnake(SnakeBody** input_snakeHead);

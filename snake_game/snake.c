@@ -4,12 +4,11 @@
 #include "snake.h"
 #include "gameSystem.h"
 #include "gameWindow.h"
-#include "apple.h"
+#include "moveResult.h"
 
 int snakeCount = 0;
-char prev_direction = UP_ARROW_CHAR;
 
-int countSnake(SnakeBody* input_snakeHead)
+static int countSnake(SnakeBody* input_snakeHead)
 {
 	snakeCount = 0;
 	SnakeBody* currBody = input_snakeHead;
@@ -17,9 +16,21 @@ int countSnake(SnakeBody* input_snakeHead)
 	{
 		snakeCount++;
 		currBody = currBody->next;
-	} while (currBody != NULL);
+	} while (currBody->next != NULL);
 
 	return snakeCount;
+}
+
+static SnakeBody* returnTail(SnakeBody* input_snakeHead)
+{
+	SnakeBody* currBody = input_snakeHead;
+
+	do
+	{
+		currBody = currBody->next;
+	} while (currBody->next != NULL);
+
+	return currBody;
 }
 
 SnakeBody* createSnakeBody(int x, int y)
@@ -45,6 +56,8 @@ SnakeBody* snakeInitialize()
 	SnakeBody* Body2 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 2);
 	SnakeBody* Body3 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 3);
 
+	prev_direction = UP_ARROW_CHAR;
+
 	init_snakeHead->next = Body1;
 	Body1->next = Body2;
 	Body2->next = Body3;
@@ -52,104 +65,132 @@ SnakeBody* snakeInitialize()
 	return init_snakeHead;
 }
 
-enum Game_Window_ResCode moveSnake(SnakeBody* input_snakeHead, char direction, bool input_apple[][GAME_FRAME_WIDTH - 2])
+enum MoveResult checkForwardMove(char input_direction)
 {
-	SnakeBody* currBody = input_snakeHead;
-	int currX = currBody->x;
-	int currY = currBody->y;
-	int prevX, prevY;
-	int addSnakeFlag = false;
-
-	if (direction == UP_ARROW_CHAR)
-		currBody->y--;
-	else if (direction == BELOW_ARROW_CHAR)
-		currBody->y++;
-	else if (direction == LEFT_ARROW_CHAR)
-		currBody->x--;
-	else if (direction == RIGHT_ARROW_CHAR)
-		currBody->x++;
-
-	if (checkEatApple(currBody->x, currBody->y))
-		addSnakeFlag = true;
-
-	prev_direction = direction;
-
-	currBody = currBody->next;
-
-	do
+	switch (input_direction)
 	{
-		// Save position of current 
-		prevX = currX;
-		prevY = currY;
-
-		// Save position of next
-		currX = currBody->x;
-		currY = currBody->y;
-
-		// Update position to current
-		currBody->x = prevX;
-		currBody->y = prevY;
-
-		// Move to next object
-		currBody = currBody->next;
-
-	} while (currBody->next != NULL);
-
-	// Save position of current 
-	prevX = currX;
-	prevY = currY;
-
-	// Save position of next
-	if (currBody == NULL)
-	{
-		exit(1);
+	case UP_ARROW_CHAR:
+		if (prev_direction == BELOW_ARROW_CHAR)	return MOVE_INVALID;
+		else
+		{
+			prev_direction = input_direction;
+			return MOVE_IDLE;
+		}
+		break;
+	case BELOW_ARROW_CHAR:
+		if (prev_direction == UP_ARROW_CHAR)	return MOVE_INVALID;
+		else
+		{
+			prev_direction = input_direction;
+			return MOVE_IDLE;
+		}
+		break;
+	case LEFT_ARROW_CHAR:
+		if (prev_direction == RIGHT_ARROW_CHAR)	return MOVE_INVALID;
+		else
+		{
+			prev_direction = input_direction;
+			return MOVE_IDLE;
+		}
+		break;
+	case RIGHT_ARROW_CHAR:
+		if (prev_direction == LEFT_ARROW_CHAR)	return MOVE_INVALID;
+		else
+		{
+			prev_direction = input_direction;
+			return MOVE_IDLE;
+		}
+		break;
+	default:
+		return MOVE_INVALID;
 	}
-	currX = currBody->x;
-	currY = currBody->y;
+}
 
-	// Update position to current
-	currBody->x = prevX;
-	currBody->y = prevY;
-
-	if (addSnakeFlag)
+enum MoveResult checkEatBody(SnakeBody* input_snakeHead, NewHeadXY input_headXY)
+{
+	while (input_snakeHead->next->next != NULL)
 	{
-		SnakeBody* SnakeTail = createSnakeBody(currX, currY);
-		currBody->next = SnakeTail;
+		if ((input_snakeHead->x == input_headXY.x) &&
+			(input_snakeHead->y == input_headXY.y))
+			return MOVE_DIE;
+		input_snakeHead = input_snakeHead->next;
 	}
 
-	return SURVIVE;
+	return MOVE_IDLE;
+}
+
+void deleteSnakeTail(SnakeBody* input_snakeHead)
+{
+	while ((input_snakeHead)->next->next != NULL)
+	{
+		(input_snakeHead) = (input_snakeHead)->next;
+	}
+	free((input_snakeHead)->next);
+	(input_snakeHead)->next = NULL;
+}
+
+SnakeBody* moveSnakeAndAdd(SnakeBody* input_snakeHead, char input_direction, bool add_flag)
+{
+	int currX = input_snakeHead->x;
+	int currY = input_snakeHead->y;
+
+	switch (input_direction)
+	{
+	case UP_ARROW_CHAR:
+		currY--;
+		break;
+	case BELOW_ARROW_CHAR:
+		currY++;
+		break;
+	case LEFT_ARROW_CHAR:
+		currX--;
+		break;
+	case RIGHT_ARROW_CHAR:
+		currX++;
+		break;
+	}
+
+	SnakeBody* new_head = createSnakeBody(currX, currY);
+	new_head->next = input_snakeHead;
+
+	if (!add_flag)	deleteSnakeTail(new_head);
+
+	return new_head;
 }
 
 void showSnake(SnakeBody* input_snakeHead)
 {
-	SnakeBody* currBody = input_snakeHead;
-	int tailX, tailY;
-	do
+	int headX = input_snakeHead->x;
+	int headY = input_snakeHead->y;
+
+	printChar(input_snakeHead->x, input_snakeHead->y, '%');
+	input_snakeHead = input_snakeHead->next;
+
+	while (input_snakeHead->next != NULL)
 	{
-		printChar(currBody->x, currBody->y, 'O');
+		printChar(input_snakeHead->x, input_snakeHead->y, 'O');
+		input_snakeHead = input_snakeHead->next;
+	} 
 
-		tailX = currBody->x;
-		tailY = currBody->y;
-
-		currBody = currBody->next;
-	} while (currBody != NULL);
+	if (input_snakeHead == NULL) return;
 	
-	printChar(tailX, tailY, ' ');
+	if (input_snakeHead->x == headX && input_snakeHead->y == headY)
+		printChar(input_snakeHead->x, input_snakeHead->y, '%');
+	else
+		printChar(input_snakeHead->x, input_snakeHead->y, ' ');
 }
 
-void freeSnake(SnakeBody* input_snakeHead)
+void freeSnake(SnakeBody** input_snakeHead)
 {
-
-}
-
-enum Game_Window_ResCode snakeSystem(SnakeBody* input_snakeHead, char direction, bool input_apple[][GAME_FRAME_WIDTH-2])
-{
-	enum Game_Window_ResCode resCode = moveSnake(input_snakeHead, direction, input_apple);
-	if (resCode == DEAD)
-		return resCode;
-
-	showSnake(input_snakeHead);
-
-	resCode = SURVIVE;
-	return resCode;
+	if (*input_snakeHead == NULL)
+	{
+		return;
+	}
+	
+	if ((*input_snakeHead)->next != NULL)
+	{
+		freeSnake((*input_snakeHead)->next);
+	}
+	free(*input_snakeHead);
+	*input_snakeHead = NULL;
 }
