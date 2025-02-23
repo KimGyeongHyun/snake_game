@@ -10,4 +10,9 @@ enum MoveResult
 	MOVE_DIE,
 };
 
+typedef struct NEW_HEAD_XY
+{
+	int x, y;
+}NewHeadXY;
+
 enum MoveResult move_result(SnakeBody** input_snake_body, int input_direction);

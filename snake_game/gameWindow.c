@@ -17,6 +17,31 @@ char inputChar;
 enum Game_Window_ResCode gwResCode;
 enum Direction_Validation dirResCode;
 
+// init apple, spike, snake
+static SnakeBody* initGameParameter()
+{
+	SnakeBody* snakeHead = snakeInitialize();
+
+	initAppleAndSpike();
+	addRandomApple(snakeHead);
+	addRandomSpike(snakeHead);
+	return snakeHead;
+}
+
+// init show apple, spike, snake
+static void initShowGameObject(SnakeBody* input_snake_body)
+{
+	showAppleSpike();
+	showSnake(input_snake_body);
+}
+
+// show apple, spike, snake
+static void reShowGameObject(SnakeBody* input_snake_body)
+{
+	showAppleSpike();
+	showSnake(input_snake_body);
+}
+
 enum Direction_Validation dir_check(char inputChar)
 {
 	switch (prev_direction)
@@ -61,12 +86,10 @@ void openGameWindow(void)
 
 	openGameScoreFrame();
 
-	SnakeBody* snakeHead = snakeInitialize();
+	SnakeBody* snakeHead = initGameParameter();
 
-	addRandomApple(snakeHead);
-	addRandomSpike(snakeHead);
-	showAppleSpike();
-	showSnake(snakeHead);
+	initShowGameObject(snakeHead);
+
 
 	for (;;)
 	{

@@ -130,8 +130,7 @@ SnakeBody* moveSnakeAndAdd(SnakeBody* input_snakeHead, char input_direction, boo
 	SnakeBody* new_head = createSnakeBody(currX, currY);
 	new_head->next = input_snakeHead;
 
-	// if (!add_flag)
-	deleteSnakeTail(new_head);
+	if (!add_flag)	deleteSnakeTail(new_head);
 
 	return new_head;
 }

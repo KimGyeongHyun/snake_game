@@ -11,6 +11,7 @@
 extern bool apple[GAME_FRAME_HEIGHT - 2][GAME_FRAME_WIDTH - 2];
 extern bool spike[GAME_FRAME_HEIGHT - 2][GAME_FRAME_WIDTH - 2];
 
+void initAppleAndSpike();
 void addRandomApple(SnakeBody* input_SnakeHead);
 void addRandomSpike(SnakeBody* input_SnakeHead);
 void showAppleSpike();

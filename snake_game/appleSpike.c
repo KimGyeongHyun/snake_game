@@ -7,6 +7,18 @@
 bool apple[][GAME_FRAME_WIDTH - 2] = {false, };
 bool spike[][GAME_FRAME_WIDTH - 2] = { false, };
 
+void initAppleAndSpike()
+{
+	for (int x = 0; x < GAME_FRAME_WIDTH - 2; x++)
+	{
+		for (int y = 0; y < GAME_FRAME_HEIGHT - 2; y++)
+		{
+			apple[y][x] = false;
+			spike[y][x] = false;
+		}
+	}
+}
+
 void addApple(int x, int y)
 {
 	apple[y][x] = true;

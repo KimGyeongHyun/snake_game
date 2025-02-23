@@ -8,12 +8,13 @@ void openGameFrame(void)
 
 void resetGameFrame(void)
 {
-	printSquare(GAME_FRAME_X_START, GAME_FRAME_Y_START, GAME_FRAME_WIDTH, GAME_FRAME_HEIGHT);
-	for (int i = GAME_FRAME_X_START + 1; i < GAME_FRAME_X_START + GAME_FRAME_WIDTH - 1; i++)
+	openGameFrame();
+	char* blankStr = (char *)malloc(sizeof(char) * (GAME_FRAME_X_START - 2));
+	for (int i = 0; i < GAME_FRAME_X_START - 2; i++)	blankStr[i] = ' ';
+
+	for (int j = GAME_FRAME_Y_START + 1; j < GAME_FRAME_Y_START + GAME_FRAME_HEIGHT - 1; j++)
 	{
-		for (int j = GAME_FRAME_Y_START + 1; j < GAME_FRAME_Y_START + GAME_FRAME_HEIGHT - 1; j++)
-		{
-			printChar(i, j, ' ');
-		}
+		gotoxy(GAME_FRAME_X_START + 1, j);
+
 	}
 }
