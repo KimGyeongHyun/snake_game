@@ -68,7 +68,7 @@ static enum MoveResult checkMoveApple(NewHeadXY input_xy)
 	return MOVE_IDLE;
 }
 
-enum MoveResult move_result(SnakeBody** input_snake_body, int input_direction)
+enum MoveResult move_result(SnakeBody** input_snakeHead, int input_direction)
 {
 	enum MoveResult res = MOVE_IDLE;
 	bool eatAppleFlag = false;
@@ -77,7 +77,11 @@ enum MoveResult move_result(SnakeBody** input_snake_body, int input_direction)
 	if (res == MOVE_INVALID)
 		return MOVE_INVALID;	
 
-	NewHeadXY headXY = returnHeadXY(*input_snake_body, input_direction);
+	NewHeadXY headXY = returnHeadXY(*input_snakeHead, input_direction);
+
+	res = checkEatBody(*input_snakeHead, headXY);
+	if (res == MOVE_DIE)
+		return MOVE_DIE;
 
 	res = checkMoveSpike(headXY);
 	if (res == MOVE_DIE)	
@@ -94,12 +98,12 @@ enum MoveResult move_result(SnakeBody** input_snake_body, int input_direction)
 		eatAppleFlag = true;
 	}
 		
-	*input_snake_body = moveSnakeAndAdd(*input_snake_body, input_direction, eatAppleFlag);
+	*input_snakeHead = moveSnakeAndAdd(*input_snakeHead, input_direction, eatAppleFlag);
 
 	if (res == MOVE_ADD_APPLE_AND_SPIKE)
 	{
-		addRandomApple(*input_snake_body);
-		addRandomSpike(*input_snake_body);
+		addRandomApple(*input_snakeHead);
+		addRandomSpike(*input_snakeHead);
 	}
 
 	return res;

@@ -35,16 +35,8 @@ static void showGameObject(SnakeBody* input_snake_body)
 	showSnake(input_snake_body);
 }
 
-// show apple, spike, snake
-static void reShowGameObject(SnakeBody* input_snake_body)
-{
-	showAppleSpike();
-	showSnake(input_snake_body);
-}
-
 void openGameWindow(void)
 {
-
 	enum MoveResult res = MOVE_IDLE;
 
 	displayEmptyWindow();

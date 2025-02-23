@@ -106,6 +106,19 @@ enum MoveResult checkForwardMove(char input_direction)
 	}
 }
 
+enum MoveResult checkEatBody(SnakeBody* input_snakeHead, NewHeadXY input_headXY)
+{
+	while (input_snakeHead->next->next != NULL)
+	{
+		if ((input_snakeHead->x == input_headXY.x) &&
+			(input_snakeHead->y == input_headXY.y))
+			return MOVE_DIE;
+		input_snakeHead = input_snakeHead->next;
+	}
+
+	return MOVE_IDLE;
+}
+
 void deleteSnakeTail(SnakeBody* input_snakeHead)
 {
 	while ((input_snakeHead)->next->next != NULL)
@@ -147,18 +160,24 @@ SnakeBody* moveSnakeAndAdd(SnakeBody* input_snakeHead, char input_direction, boo
 
 void showSnake(SnakeBody* input_snakeHead)
 {
-	SnakeBody* currBody = input_snakeHead;
-	int tailX, tailY;
-	do
+	int headX = input_snakeHead->x;
+	int headY = input_snakeHead->y;
+
+	printChar(input_snakeHead->x, input_snakeHead->y, '%');
+	input_snakeHead = input_snakeHead->next;
+
+	while (input_snakeHead->next != NULL)
 	{
-		printChar(currBody->x, currBody->y, 'O');
+		printChar(input_snakeHead->x, input_snakeHead->y, 'O');
+		input_snakeHead = input_snakeHead->next;
+	} 
 
-		tailX = currBody->x;
-		tailY = currBody->y;
-
-		currBody = currBody->next;
-	} while (currBody->next != NULL);
-	printChar(currBody->x, currBody->y, ' ');
+	if (input_snakeHead == NULL) return;
+	
+	if (input_snakeHead->x == headX && input_snakeHead->y == headY)
+		printChar(input_snakeHead->x, input_snakeHead->y, '%');
+	else
+		printChar(input_snakeHead->x, input_snakeHead->y, ' ');
 }
 
 void freeSnake(SnakeBody** input_snakeHead)
