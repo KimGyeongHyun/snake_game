@@ -21,17 +21,17 @@ void initAppleAndSpike()
 
 void addApple(int x, int y)
 {
-	apple[y - GAME_FRAME_HEIGHT - 1][x - GAME_FRAME_WIDTH - 1] = true;
+	apple[y - GAME_FRAME_Y_START - 1][x - GAME_FRAME_X_START - 1] = true;
 }
 
 void deleteApple(int x, int y)
 {
-	apple[y - GAME_FRAME_HEIGHT - 1][x - GAME_FRAME_WIDTH - 1] = false;
+	apple[y - GAME_FRAME_Y_START - 1][x - GAME_FRAME_X_START - 1] = false;
 }
 
 void addSpike(int x, int y)
 {
-	spike[y - GAME_FRAME_HEIGHT - 1][x - GAME_FRAME_WIDTH - 1] = true;
+	spike[y - GAME_FRAME_Y_START - 1][x - GAME_FRAME_X_START - 1] = true;
 }
 
 int countApple()

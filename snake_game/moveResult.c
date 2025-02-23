@@ -94,7 +94,6 @@ enum MoveResult move_result(SnakeBody** input_snake_body, int input_direction)
 		eatAppleFlag = true;
 	}
 		
-
 	*input_snake_body = moveSnakeAndAdd(*input_snake_body, input_direction, eatAppleFlag);
 
 	if (res == MOVE_ADD_APPLE_AND_SPIKE)

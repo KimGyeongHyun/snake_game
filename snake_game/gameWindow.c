@@ -29,7 +29,7 @@ static SnakeBody* initGameParameter()
 }
 
 // init show apple, spike, snake
-static void initShowGameObject(SnakeBody* input_snake_body)
+static void showGameObject(SnakeBody* input_snake_body)
 {
 	showAppleSpike();
 	showSnake(input_snake_body);
@@ -55,7 +55,7 @@ void openGameWindow(void)
 
 	SnakeBody* snakeHead = initGameParameter();
 
-	initShowGameObject(snakeHead);
+	showGameObject(snakeHead);
 
 
 	for (;;)
@@ -74,7 +74,7 @@ void openGameWindow(void)
 			if (res == MOVE_DIE)	
 				break;
 
-			showSnake(snakeHead);
+			showGameObject(snakeHead);
 
 		}
 	}

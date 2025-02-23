@@ -13,7 +13,7 @@ extern bool spike[GAME_FRAME_HEIGHT - 2][GAME_FRAME_WIDTH - 2];
 
 void initAppleAndSpike();
 int countApple();
+void deleteApple(int x, int y);
 void addRandomApple(SnakeBody* input_SnakeHead);
 void addRandomSpike(SnakeBody* input_SnakeHead);
 void showAppleSpike();
-bool checkEatApple(int x, int y);
