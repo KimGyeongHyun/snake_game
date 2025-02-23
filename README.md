@@ -25,41 +25,41 @@ C language study
 
 # TODO
 
-    menu 도 element 로 봐야할지 생각, 구상 - 완료
-        element 로 보고 window 를 변경할 땐 해당 element 를 참고만 하는 방식으로 작성하기
+    메인 메뉴 선택 재구현 
 
-    snake, apple 출력 방식 검토
-        현재 gameWindow 에서 Element 내 출력 함수를 불러와 출력 중
-        gameFrame 에서 작동하는 코드는 empty frame 출력 뿐
-        gameFream 에서 element 출력이 되어야 함
-        Windown 와 Frame 에서 선언해야 하는 변수를 명확하게 구별할 필요 있음
-            score 는 window, 그 외 snake, apple, spike 는 frame ...
+        구현 항목
+            1. Main menu window 에서 화살표 누를 경우 메뉴 옆에 표시해야 함 (active)
+            2. Main menu window 에서 엔터 누를 경우 active 메뉴에 따라 window 가 바뀌어야 함 
+                main game 단에서 window index 정보 인지 필요
 
-    코드 다듬기
-        gameWindow 에서 각 element 호출 방식 재확인
-        gameWindow, snake, apple 함수, 변수 정리, 리팩토링
-        주석 추가
-        향후 수정할 점 정리
+        전제 
 
-    game window 구상 및 작성
-        1. snake, apple, spike, score 등의 기능 구현
+            main game 에서 있어야 할 것
+                window index 
+                window index enum, length 
 
-            snake 길이에 따른 apple 랜덤 추가 구현
-                snake 길이 리턴 함수 구현
-                향후 spike 도 해당 타이밍에 함께 추가
+            main menu window 에서 있어야 할 것 
+                main menu frame include
+                    active window index, enum, length 
+                    struct{active window index, enter flag}
+                    control cative window index function 
+                struct 객체 생성 
+                하위 함수 호출하여 객체 갱신 및 enter 조건 확인
+                    enter 일 경우 
+                    상위 main game 으로 정보 전달 필요 
 
-            게임 조건 구현 (snake 모듈화 방식)
-                snake 가 gameFrame 에서만 동작하도록 구현
-                spike 구현
-                snake 가 본인 몸을 물었을 경우 게임 오버 구현
 
-        2. 게임 작동 방식 구현
+            main menu frame 에서 있어야 할 것 
+                active window index
+                active window index enum, length 
+                struct {active window index, enter flag}
+                control active window index function
+                    키보드 입력을 받아 객체 갱신
+                객체 print 
 
-            다른 브랜치에서 구상
-
+            main menu 에서 있어야 할 것 - X
 
     사용하지 않는 include 파일 제거
-
     사용하지 않는 #define, 상수, 변수 제거
 
 # Long view
