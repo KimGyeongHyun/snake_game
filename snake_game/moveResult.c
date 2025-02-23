@@ -37,7 +37,7 @@ static NewHeadXY returnHeadXY(SnakeBody* input_snake_body, char input_direction)
 static enum MoveResult checkMoveSpike(NewHeadXY input_xy)
 {
 
-	if (spike[input_xy.y - GAME_FRAME_Y_START][input_xy.x - GAME_FRAME_X_START]) return MOVE_DIE;
+	if (spike[input_xy.y - GAME_FRAME_Y_START-1][input_xy.x - GAME_FRAME_X_START-1]) return MOVE_DIE;
 
 	return MOVE_IDLE;
 }
@@ -45,9 +45,9 @@ static enum MoveResult checkMoveSpike(NewHeadXY input_xy)
 static enum MoveResult checkMoveWall(NewHeadXY input_xy)
 {
 	if (input_xy.x <= GAME_FRAME_X_START ||
-		input_xy.x >= GAME_FRAME_X_START + GAME_FRAME_WIDTH - 2 ||
+		input_xy.x >= GAME_FRAME_X_START + GAME_FRAME_WIDTH - 1 ||
 		input_xy.y <= GAME_FRAME_Y_START ||
-		input_xy.y >= GAME_FRAME_Y_START + GAME_FRAME_HEIGHT - 2)
+		input_xy.y >= GAME_FRAME_Y_START + GAME_FRAME_HEIGHT - 1)
 	{
 		return MOVE_DIE;
 	}
@@ -58,8 +58,13 @@ static enum MoveResult checkMoveWall(NewHeadXY input_xy)
 static enum MoveResult checkMoveApple(NewHeadXY input_xy)
 {
 	if (apple[input_xy.y - GAME_FRAME_Y_START - 1][input_xy.x - GAME_FRAME_X_START - 1])
-		return MOVE_EAT;
-
+	{
+		if (countApple() <= ADD_SPIKE_COUNT)
+			return MOVE_ADD_APPLE_AND_SPIKE;
+		else 
+			return MOVE_EAT;
+	}
+	
 	return MOVE_IDLE;
 }
 
@@ -71,10 +76,10 @@ enum MoveResult move_result(SnakeBody** input_snake_body, int input_direction)
 	NewHeadXY headXY = returnHeadXY(*input_snake_body, input_direction);
 
 	res = checkMoveSpike(headXY);
-	if (res == MOVE_DIE) {}
+	if (res == MOVE_DIE)	return MOVE_DIE;
 
 	res = checkMoveWall(headXY);
-	if (res == MOVE_DIE) {}
+	if (res == MOVE_DIE)	return MOVE_DIE;
 
 	res = checkMoveApple(headXY);
 	if (res == MOVE_EAT)	eatAppleFlag = true;

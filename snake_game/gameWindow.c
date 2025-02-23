@@ -102,6 +102,15 @@ void openGameWindow(void)
 		{
 			// 25.02.22 return result of move
 			res = move_result(&snakeHead, inputChar);
+
+			if (res == MOVE_DIE)	break;
+
+			if (res == MOVE_ADD_APPLE_AND_SPIKE)
+			{
+				addRandomApple(snakeHead);
+				addRandomSpike(snakeHead);
+			}
+
 			showSnake(snakeHead);
 
 		}

@@ -8,6 +8,7 @@ enum MoveResult
 	MOVE_JUST,
 	MOVE_EAT,
 	MOVE_DIE,
+	MOVE_ADD_APPLE_AND_SPIKE,
 };
 
 typedef struct NEW_HEAD_XY

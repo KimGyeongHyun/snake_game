@@ -34,6 +34,20 @@ void addSpike(int x, int y)
 	spike[y][x] = true;
 }
 
+int countApple()
+{
+	int appleCount = 0;
+	for (int i = 0; i < GAME_FRAME_WIDTH - 2; i++)
+	{
+		for (int j = 0; j < GAME_FRAME_HEIGHT - 2; j++)
+		{
+			if (apple[j][i])	appleCount++;
+		}
+	}
+
+	return appleCount;
+}
+
 void addRandomApple(SnakeBody* input_SnakeHead)
 {
 	int randX, randY;
