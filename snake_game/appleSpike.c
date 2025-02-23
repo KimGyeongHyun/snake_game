@@ -21,17 +21,17 @@ void initAppleAndSpike()
 
 void addApple(int x, int y)
 {
-	apple[y][x] = true;
+	apple[y - GAME_FRAME_HEIGHT - 1][x - GAME_FRAME_WIDTH - 1] = true;
 }
 
 void deleteApple(int x, int y)
 {
-	apple[y][x] = false;
+	apple[y - GAME_FRAME_HEIGHT - 1][x - GAME_FRAME_WIDTH - 1] = false;
 }
 
 void addSpike(int x, int y)
 {
-	spike[y][x] = true;
+	spike[y - GAME_FRAME_HEIGHT - 1][x - GAME_FRAME_WIDTH - 1] = true;
 }
 
 int countApple()
@@ -82,7 +82,7 @@ void addRandomApple(SnakeBody* input_SnakeHead)
 
 		if (closeSnakeFlag)	continue;
 
-		addApple(randX, randY);
+		apple[randY][randX] = true;
 		appleCount++;
 	}
 }
@@ -92,11 +92,11 @@ void addRandomSpike(SnakeBody* input_SnakeHead)
 	int randX, randY;
 	bool closeSnakeFlag;
 	SnakeBody* currBody;
-	int appleCount = 0;
+	int spikeCount = 0;
 
 	srand((unsigned int)time(NULL));
 
-	while (appleCount < ADD_SPIKE_COUNT)
+	while (spikeCount < ADD_SPIKE_COUNT)
 	{
 		closeSnakeFlag = false;
 		currBody = input_SnakeHead;
@@ -122,8 +122,8 @@ void addRandomSpike(SnakeBody* input_SnakeHead)
 
 		if (closeSnakeFlag)	continue;
 
-		addSpike(randX, randY);
-		appleCount++;
+		spike[randY][randX] = true;
+		spikeCount++;
 	}
 }
 

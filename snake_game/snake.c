@@ -4,6 +4,7 @@
 #include "snake.h"
 #include "gameSystem.h"
 #include "gameWindow.h"
+#include "moveResult.h"
 
 int snakeCount = 0;
 
@@ -55,7 +56,7 @@ SnakeBody* snakeInitialize()
 	SnakeBody* Body2 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 2);
 	SnakeBody* Body3 = createSnakeBody(SNAKE_START_X, SNAKE_START_Y + 3);
 
-	char prev_direction = UP_ARROW_CHAR;
+	prev_direction = UP_ARROW_CHAR;
 
 	init_snakeHead->next = Body1;
 	Body1->next = Body2;
@@ -64,28 +65,44 @@ SnakeBody* snakeInitialize()
 	return init_snakeHead;
 }
 
-enum SnakeMoveValid snakeMoveValidCheck(char input_direction)
+enum MoveResult checkForwardMove(char input_direction)
 {
 	switch (input_direction)
 	{
 	case UP_ARROW_CHAR:
-		if (prev_direction == BELOW_ARROW_CHAR)	return SNAKE_MOVE_NO;
-		else									return SNAKE_MOVE_OK;
+		if (prev_direction == BELOW_ARROW_CHAR)	return MOVE_INVALID;
+		else
+		{
+			prev_direction = input_direction;
+			return MOVE_IDLE;
+		}
 		break;
 	case BELOW_ARROW_CHAR:
-		if (prev_direction == UP_ARROW_CHAR)	return SNAKE_MOVE_NO;
-		else									return SNAKE_MOVE_OK;
+		if (prev_direction == UP_ARROW_CHAR)	return MOVE_INVALID;
+		else
+		{
+			prev_direction = input_direction;
+			return MOVE_IDLE;
+		}
 		break;
 	case LEFT_ARROW_CHAR:
-		if (prev_direction == RIGHT_ARROW_CHAR)	return SNAKE_MOVE_NO;
-		else									return SNAKE_MOVE_OK;
+		if (prev_direction == RIGHT_ARROW_CHAR)	return MOVE_INVALID;
+		else
+		{
+			prev_direction = input_direction;
+			return MOVE_IDLE;
+		}
 		break;
 	case RIGHT_ARROW_CHAR:
-		if (prev_direction == LEFT_ARROW_CHAR)	return SNAKE_MOVE_NO;
-		else									return SNAKE_MOVE_OK;
+		if (prev_direction == LEFT_ARROW_CHAR)	return MOVE_INVALID;
+		else
+		{
+			prev_direction = input_direction;
+			return MOVE_IDLE;
+		}
 		break;
 	default:
-		return SNAKE_MOVE_NO;
+		return MOVE_INVALID;
 	}
 }
 
@@ -101,13 +118,6 @@ void deleteSnakeTail(SnakeBody* input_snakeHead)
 
 SnakeBody* moveSnakeAndAdd(SnakeBody* input_snakeHead, char input_direction, bool add_flag)
 {
-	enum SnakeMoveValid moveValidFlag = snakeMoveValidCheck(input_direction);
-
-	if (moveValidFlag == SNAKE_MOVE_NO)
-		return input_snakeHead;
-	else
-		prev_direction = input_direction;
-
 	int currX = input_snakeHead->x;
 	int currY = input_snakeHead->y;
 

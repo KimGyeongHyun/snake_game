@@ -42,39 +42,6 @@ static void reShowGameObject(SnakeBody* input_snake_body)
 	showSnake(input_snake_body);
 }
 
-enum Direction_Validation dir_check(char inputChar)
-{
-	switch (prev_direction)
-	{
-	case UP_ARROW_CHAR:
-		if (inputChar == BELOW_ARROW_CHAR)
-			return DIR_NO;
-		else
-			return DIR_OK;
-		break;
-	case BELOW_ARROW_CHAR:
-		if (inputChar == UP_ARROW_CHAR)
-			return DIR_NO;
-		else
-			return DIR_OK;
-		break;
-	case LEFT_ARROW_CHAR:
-		if (inputChar == RIGHT_ARROW_CHAR)
-			return DIR_NO;
-		else
-			return DIR_OK;
-		break;
-	case RIGHT_ARROW_CHAR:
-		if (inputChar == LEFT_ARROW_CHAR)
-			return DIR_NO;
-		else
-			return DIR_OK;
-		break;
-	}
-
-	return DIR_NO;
-}
-
 void openGameWindow(void)
 {
 
@@ -100,16 +67,12 @@ void openGameWindow(void)
 			inputChar == LEFT_ARROW_CHAR ||
 			inputChar == RIGHT_ARROW_CHAR)
 		{
+
 			// 25.02.22 return result of move
 			res = move_result(&snakeHead, inputChar);
 
-			if (res == MOVE_DIE)	break;
-
-			if (res == MOVE_ADD_APPLE_AND_SPIKE)
-			{
-				addRandomApple(snakeHead);
-				addRandomSpike(snakeHead);
-			}
+			if (res == MOVE_DIE)	
+				break;
 
 			showSnake(snakeHead);
 

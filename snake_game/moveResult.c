@@ -73,20 +73,35 @@ enum MoveResult move_result(SnakeBody** input_snake_body, int input_direction)
 	enum MoveResult res = MOVE_IDLE;
 	bool eatAppleFlag = false;
 
+	res = checkForwardMove(input_direction);
+	if (res == MOVE_INVALID)
+		return MOVE_INVALID;	
+
 	NewHeadXY headXY = returnHeadXY(*input_snake_body, input_direction);
 
 	res = checkMoveSpike(headXY);
-	if (res == MOVE_DIE)	return MOVE_DIE;
+	if (res == MOVE_DIE)	
+		return MOVE_DIE;
 
 	res = checkMoveWall(headXY);
-	if (res == MOVE_DIE)	return MOVE_DIE;
+	if (res == MOVE_DIE)	
+		return MOVE_DIE;
 
 	res = checkMoveApple(headXY);
-	if (res == MOVE_EAT)	eatAppleFlag = true;
+	if (res != MOVE_IDLE)
+	{
+		deleteApple(headXY.x, headXY.y);
+		eatAppleFlag = true;
+	}
+		
 
 	*input_snake_body = moveSnakeAndAdd(*input_snake_body, input_direction, eatAppleFlag);
 
-
+	if (res == MOVE_ADD_APPLE_AND_SPIKE)
+	{
+		addRandomApple(*input_snake_body);
+		addRandomSpike(*input_snake_body);
+	}
 
 	return res;
 }
