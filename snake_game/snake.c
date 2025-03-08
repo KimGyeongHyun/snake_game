@@ -189,7 +189,7 @@ void freeSnake(SnakeBody** input_snakeHead)
 	
 	if ((*input_snakeHead)->next != NULL)
 	{
-		freeSnake((*input_snakeHead)->next);
+		freeSnake(&((*input_snakeHead)->next));
 	}
 	free(*input_snakeHead);
 	*input_snakeHead = NULL;
