@@ -27,7 +27,7 @@ static int windowIndex = 0;
 // Mapping menuIndex -> windowIndex
 void menuToWindowMapping()
 {
-	windowIndex = MENU_TO_WINDOW_MAPPING[menuIndex][1];
+	windowIndex = MENU_TO_WINDOW_MAPPING[getMenuIndex()][1];
 }
 
 // main game function

@@ -9,7 +9,12 @@ char menuArray[MAIN_MENU_NUMBER][10] = {
 };
 
 // Active menu Index
-enum Menu_Index menuIndex = MENU_START;
+static enum Menu_Index menuIndex = MENU_START;
+
+enum Menu_Index getMenuIndex(void)
+{
+	return menuIndex;
+}
 
 // Change active menu
 void changeMenuIndex(char inputChar)

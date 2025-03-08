@@ -18,7 +18,7 @@ void printSelectedMenuIcon()
 	{
 		printChar(MAIN_MENU_FRAME_X_START + 2, MAIN_MENU_FRAME_Y_START + 2 * (i + 1), ' ');
 	}
-	printChar(MAIN_MENU_FRAME_X_START + 2, MAIN_MENU_FRAME_Y_START + 2 * (menuIndex + 1), '@');
+	printChar(MAIN_MENU_FRAME_X_START + 2, MAIN_MENU_FRAME_Y_START + 2 * (getMenuIndex() + 1), '@');
 }
 
 void displayMainMenuFrame()
